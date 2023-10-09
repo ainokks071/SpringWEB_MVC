@@ -1,0 +1,27 @@
+package kr.narp.myapp;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+// @(어노테이션 : 전처리) -> 객체가 생성되어 SpringContainer에서 관리를 해준다.
+@Controller
+public class MemberController {
+
+	@RequestMapping("/memberList.do")
+	public String memberList() {
+		
+		return "memberList";
+	}
+	
+	@RequestMapping("/memberInsert.do")
+	public String memberInsert() {
+		
+		return "redirect:/memberList.do";
+	}
+	
+	@RequestMapping("/memberRegister.do")
+	public String memberRegister() {
+		
+		return "memberRegister";
+	}
+}

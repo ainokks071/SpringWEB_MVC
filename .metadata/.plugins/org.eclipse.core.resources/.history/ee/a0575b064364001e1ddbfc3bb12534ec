@@ -1,0 +1,10 @@
+package kr.narp.myapp;
+
+public class MemberController {
+
+	@RequestMapping("/memberList.do")
+	public String memberList() {
+		
+		return "memberList";
+	}
+}

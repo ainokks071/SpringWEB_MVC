@@ -1,0 +1,12 @@
+package kr.narp.myapp;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+public class MemberController {
+
+	@RequestMapping("/memberList.do")
+	public String memberList() {
+		
+		return "memberList";
+	}
+}

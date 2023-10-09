@@ -1,0 +1,9 @@
+package kr.narp.myapp;
+
+public class MemberController {
+
+	public String memberList() {
+		
+		return "memberList";
+	}
+}
