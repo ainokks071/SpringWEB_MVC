@@ -1,4 +1,97 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Spring]]></title><description><![CDATA[Level up your Java code and explore what Spring can do for you.]]></description><link>https://spring.io</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 12 Oct 2023 12:05:39 GMT</lastBuildDate><item><title><![CDATA[Spring Framework 6.0.13 available now]]></title><link>https://spring.io/blog/2023/10/12/spring-framework-6-0-13-available-now</link><guid isPermaLink="true">https://spring.io/blog/2023/10/12/spring-framework-6-0-13-available-now</guid><dc:creator><![CDATA[Brian Clozel]]></dc:creator><pubDate>Thu, 12 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I am pleased to announce that Spring Framework &lt;code&gt;6.0.13&lt;/code&gt; is available now.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Spring]]></title><description><![CDATA[Level up your Java code and explore what Spring can do for you.]]></description><link>https://spring.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 16 Oct 2023 08:25:07 GMT</lastBuildDate><item><title><![CDATA[Spring Data 2023.1 goes RC1]]></title><link>https://spring.io/blog/2023/10/13/spring-data-2023-1-goes-rc1</link><guid isPermaLink="true">https://spring.io/blog/2023/10/13/spring-data-2023-1-goes-rc1</guid><dc:creator><![CDATA[Mark Paluch]]></dc:creator><pubDate>Fri, 13 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;It is my pleasure to announce that a feature-complete Spring Data &lt;code&gt;2023.1&lt;/code&gt; release candidate is available now! This release is in preparation for a first Spring Boot 3.2 release candidate next week. We expect final releases for general availability in November.&lt;/p&gt;
+&lt;p&gt;This RC ships a couple of New and Noteworthy changes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;@ReadPreference&lt;/code&gt; support for Repository Query Methods and support for dots in MongoDB document field names.&lt;/li&gt;
+&lt;li&gt;Revision of the &lt;code&gt;Converter&lt;/code&gt; arrangement in Spring Data Relational allowing to use the same converter abstraction for JDBC and R2DBC modules.&lt;/li&gt;
+&lt;li&gt;Asynchronous Caching support for Redis when using the Lettuce driver.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can find the consolidated list of changes at the &lt;a href=&quot;https://github.com/spring-projects/spring-data-commons/wiki/Spring-Data-2023.1-%28Vaughan%29-Release-Notes&quot;&gt;release notes&lt;/a&gt; for the &lt;code&gt;2023.1&lt;/code&gt; release train.&lt;/p&gt;
+&lt;p&gt;To round things off, here are the links to the documentation and individual change logs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Data Commons &lt;code&gt;3.2 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/docs/3.2.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-commons/releases/tag/3.2.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data JPA &lt;code&gt;3.2 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/docs/3.2.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-jpa/releases/tag/3.2.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Neo4j &lt;code&gt;7.2 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/docs/7.2.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-neo4j/releases/tag/7.2.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data for Apache Cassandra &lt;code&gt;4.2 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/docs/4.2.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-cassandra/releases/tag/4.2.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data MongoDB &lt;code&gt;4.2 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/docs/4.2.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-mongodb/releases/tag/4.2.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data KeyValue &lt;code&gt;3.2 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/docs/3.2.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-keyvalue/releases/tag/3.2.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data LDAP &lt;code&gt;3.2 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/docs/3.2.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-ldap/releases/tag/3.2.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data REST &lt;code&gt;4.2 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/docs/4.2.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-rest/releases/tag/4.2.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Redis &lt;code&gt;3.2 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/docs/3.2.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-redis/releases/tag/3.2.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Elasticsearch &lt;code&gt;5.2 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/docs/5.2.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-elasticsearch/releases/tag/5.2.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Couchbase &lt;code&gt;5.2 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/docs/5.2.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-couchbase/releases/tag/5.2.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Relational &lt;code&gt;3.2 RC1&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/relational/docs/3.2.0-RC1/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/relational/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-relational/releases/tag/3.2.0-RC1&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Spring Shell 3.2.0-M2 is now available]]></title><link>https://spring.io/blog/2023/10/13/spring-shell-3-2-0-m2-is-now-available</link><guid isPermaLink="true">https://spring.io/blog/2023/10/13/spring-shell-3-2-0-m2-is-now-available</guid><dc:creator><![CDATA[Janne Valkealahti]]></dc:creator><pubDate>Fri, 13 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Spring Shell 3.2.0-M2 is now available&lt;/p&gt;
+&lt;p&gt;On behalf of the team and everyone who has contributed, I&apos;m happy to announce that Spring Shell &lt;code&gt;3.2.0-M2&lt;/code&gt; is now available from Spring repos.&lt;/p&gt;
+&lt;p&gt;This release is adding first experimental support for &lt;code&gt;Terminal UI&lt;/code&gt; as shown in a below screencast:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/4hxMuDHAu66VTwhv3rvetm/fa07ec1f6eb8cac765f093769f658a49/spring-shell-tui-1.gif&quot; alt=&quot;tui&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Please see the &lt;a href=&quot;https://github.com/spring-projects/spring-shell/releases/tag/v3.2.0-M2&quot;&gt;release notes 3.2.0-M2&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
+&lt;h3 id=&quot;how-can-you-help&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-can-you-help&quot; aria-label=&quot;how can you help permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-shell/&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-shell&quot;&gt;GitHub&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-shell/issues&quot;&gt;Issues&lt;/a&gt; | &lt;a href=&quot;https://docs.spring.io/spring-shell/docs/3.1.4/docs/index.html&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Data 2023.0.5, 2022.0.11, and 2021.2.17 released]]></title><link>https://spring.io/blog/2023/10/13/spring-data-2023-0-5-2022-0-11-and-2021-2-17-released</link><guid isPermaLink="true">https://spring.io/blog/2023/10/13/spring-data-2023-0-5-2022-0-11-and-2021-2-17-released</guid><dc:creator><![CDATA[Mark Paluch]]></dc:creator><pubDate>Fri, 13 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I’m pleased to announce the availability of &lt;code&gt;2023.0.5&lt;/code&gt;, &lt;code&gt;2022.0.11&lt;/code&gt;, and &lt;code&gt;2021.2.17&lt;/code&gt; service releases. These releases ship with dependency upgrades, fixes and improvements.&lt;/p&gt;
+&lt;p&gt;The upcoming Spring Boot releases &lt;code&gt;3.1.5&lt;/code&gt;, respective &lt;code&gt;3.0.12&lt;/code&gt; and &lt;code&gt;2.7.17&lt;/code&gt; will pick up the above releases by next week.&lt;/p&gt;
+&lt;p&gt;We expect the next set of Spring Data maintenance releases to ship in mid-November, along with the new and exciting 3.2 we have been working on the last few months.&lt;/p&gt;
+&lt;h2 id=&quot;202305&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#202305&quot; aria-label=&quot;202305 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2023.0.5&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Data Commons &lt;code&gt;3.1.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/docs/3.1.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/docs/3.1.5/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-commons/releases/tag/3.1.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data JPA &lt;code&gt;3.1.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/docs/3.1.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/docs/3.1.5/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-jpa/releases/tag/3.1.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Neo4j &lt;code&gt;7.1.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/docs/7.1.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/docs/7.1.5/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-neo4j/releases/tag/7.1.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data for Apache Cassandra &lt;code&gt;4.1.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/docs/4.1.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/docs/4.1.5/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-cassandra/releases/tag/4.1.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data MongoDB &lt;code&gt;4.1.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/docs/4.1.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/docs/4.1.5/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-mongodb/releases/tag/4.1.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data KeyValue &lt;code&gt;3.1.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/docs/3.1.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/docs/3.1.5/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-keyvalue/releases/tag/3.1.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data LDAP &lt;code&gt;3.1.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/docs/3.1.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/docs/3.1.5/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-ldap/releases/tag/3.1.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data REST &lt;code&gt;4.1.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/docs/4.1.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/docs/4.1.5/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-rest/releases/tag/4.1.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Redis &lt;code&gt;3.1.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/docs/3.1.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/docs/3.1.5/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-redis/releases/tag/3.1.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Elasticsearch &lt;code&gt;5.1.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/docs/5.1.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/docs/5.1.5/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-elasticsearch/releases/tag/5.1.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Couchbase &lt;code&gt;5.1.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/docs/5.1.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/docs/5.1.5/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-couchbase/releases/tag/5.1.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Relational &lt;code&gt;3.1.5&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jdbc/docs/3.1.5/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jdbc/docs/3.1.5/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-relational/releases/tag/3.1.5&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2022011&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2022011&quot; aria-label=&quot;2022011 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2022.0.11&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Data Commons &lt;code&gt;3.0.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/docs/3.0.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/docs/3.0.11/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-commons/releases/tag/3.0.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data JPA &lt;code&gt;3.0.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/docs/3.0.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/docs/3.0.11/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-jpa/releases/tag/3.0.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Neo4j &lt;code&gt;7.0.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/docs/7.0.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/docs/7.0.11/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-neo4j/releases/tag/7.0.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data for Apache Cassandra &lt;code&gt;4.0.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/docs/4.0.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/docs/4.0.11/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-cassandra/releases/tag/4.0.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data MongoDB &lt;code&gt;4.0.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/docs/4.0.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/docs/4.0.11/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-mongodb/releases/tag/4.0.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data KeyValue &lt;code&gt;3.0.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/docs/3.0.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/docs/3.0.11/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-keyvalue/releases/tag/3.0.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data LDAP &lt;code&gt;3.0.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/docs/3.0.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/docs/3.0.11/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-ldap/releases/tag/3.0.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data REST &lt;code&gt;4.0.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/docs/4.0.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/docs/4.0.11/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-rest/releases/tag/4.0.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Redis &lt;code&gt;3.0.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/docs/3.0.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/docs/3.0.11/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-redis/releases/tag/3.0.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Elasticsearch &lt;code&gt;5.0.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/docs/5.0.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/docs/5.0.11/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-elasticsearch/releases/tag/5.0.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Couchbase &lt;code&gt;5.0.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/docs/5.0.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/docs/5.0.11/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-couchbase/releases/tag/5.0.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Relational &lt;code&gt;3.0.11&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jdbc/docs/3.0.11/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jdbc/docs/3.0.11/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-relational/releases/tag/3.0.11&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2021217&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2021217&quot; aria-label=&quot;2021217 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2021.2.17&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Data Commons &lt;code&gt;2.7.17&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/docs/2.7.17/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/docs/2.7.17/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-commons/releases/tag/2.7.17&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data JDBC &lt;code&gt;2.4.17&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jdbc/docs/2.4.17/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jdbc/docs/2.4.17/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-relational/releases/tag/2.4.17&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data JPA &lt;code&gt;2.7.17&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/docs/2.7.17/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/docs/2.7.17/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-jpa/releases/tag/2.7.17&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Neo4j &lt;code&gt;6.3.17&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/docs/6.3.17/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/docs/6.3.17/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-neo4j/releases/tag/6.3.17&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data for Apache Cassandra &lt;code&gt;3.4.17&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/docs/3.4.17/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/docs/3.4.17/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-cassandra/releases/tag/3.4.17&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data MongoDB &lt;code&gt;3.4.17&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/docs/3.4.17/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/docs/3.4.17/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-mongodb/releases/tag/3.4.17&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data KeyValue &lt;code&gt;2.7.17&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/docs/2.7.17/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/docs/2.7.17/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-keyvalue/releases/tag/2.7.17&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data R2DBC &lt;code&gt;1.5.17&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/r2dbc/docs/1.5.17/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/r2dbc/docs/1.5.17/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-r2dbc/releases/tag/1.5.17&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data for Apache Geode &lt;code&gt;2.7.17&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/geode/docs/2.7.17/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/geode/docs/2.7.17/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-geode/releases/tag/2.7.17&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data LDAP &lt;code&gt;2.7.17&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/docs/2.7.17/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/docs/2.7.17/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-ldap/releases/tag/2.7.17&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Envers &lt;code&gt;2.7.17&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/envers/docs/2.7.17/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/envers/docs/2.7.17/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-envers/releases/tag/2.7.17&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data REST &lt;code&gt;3.7.17&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/docs/3.7.17/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/docs/3.7.17/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-rest/releases/tag/3.7.17&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Redis &lt;code&gt;2.7.17&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/docs/2.7.17/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/docs/2.7.17/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-redis/releases/tag/2.7.17&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Elasticsearch &lt;code&gt;4.4.17&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/docs/4.4.17/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/docs/4.4.17/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-elasticsearch/releases/tag/4.4.17&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Data Couchbase &lt;code&gt;4.4.17&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/docs/4.4.17/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/docs/4.4.17/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-couchbase/releases/tag/4.4.17&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Java Language Architect Brian Goetz]]></title><link>https://spring.io/blog/2023/10/12/java-language-architect-brian-goetz</link><guid isPermaLink="true">https://spring.io/blog/2023/10/12/java-language-architect-brian-goetz</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Thu, 12 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! Are you using Java 21 in production already? No? you should listen to this episode. Yes? Then you should listen to this episode! This week, Josh Long talks to legendary Java Language Architect &lt;a href=&quot;https://twitter.com/BrianGoetz&quot;&gt;Brian Goetz (@BrianGoetz)&lt;/a&gt; recaping the latest-and-greatest and previewing Java.next&lt;/p&gt;
+&lt;iframe title=&quot;Java Language Architect Brian Goetz &quot; allowtransparency=&quot;true&quot; height=&quot;150&quot; width=&quot;100%&quot; style=&quot;border: none; min-width: min(100%, 430px);height:150px;&quot; scrolling=&quot;no&quot; data-name=&quot;pb-iframe-player&quot; src=&quot;https://www.podbean.com/player-v2/?i=mt2rk-14cdb13-pb&amp;from=pb6admin&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Arial&amp;skin=1&amp;font-color=&amp;logo_link=episode_page&amp;btn-skin=7&quot; loading=&quot;lazy&quot;&gt;&lt;/iframe&gt;</content:encoded></item><item><title><![CDATA[Spring Framework 6.1 RC1 released]]></title><link>https://spring.io/blog/2023/10/12/spring-framework-6-1-rc1-released</link><guid isPermaLink="true">https://spring.io/blog/2023/10/12/spring-framework-6-1-rc1-released</guid><dc:creator><![CDATA[Brian Clozel]]></dc:creator><pubDate>Thu, 12 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the Spring Framework team, it is my pleasure to announce that the first Spring Framework 6.1 release candidate is available from &lt;a href=&quot;https://repo.spring.io/milestone&quot;&gt;repo.spring.io/milestone&lt;/a&gt; now.&lt;/p&gt;
+&lt;p&gt;Spring Framework 6.1.0-RC1 ships &lt;a href=&quot;https://github.com/spring-projects/spring-framework/releases/tag/v6.1.0-RC1&quot;&gt;75 fixes and improvements&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;new-features&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#new-features&quot; aria-label=&quot;new features permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;New Features&lt;/h2&gt;
+&lt;p&gt;This first release candidate ships a few new features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Spring Framework 6.1 requires now a Jackson 2.14 baseline and supports the &lt;a href=&quot;https://github.com/FasterXML/jackson-databind/wiki/DatatypeFeatures&quot;&gt;new &lt;code&gt;DatatypeFeature&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;We have made further AOT improvements, reduced the runtime reflection and prepared Framework for upcoming reachability changes in GraalVM&lt;/li&gt;
+&lt;li&gt;You can now use an &lt;code&gt;OutputStream&lt;/code&gt; as a source of data in reactive web APIs, thanks to a new &lt;code&gt;BodyInserter&lt;/code&gt; method variant&lt;/li&gt;
+&lt;li&gt;Functional web frameworks now allow headers manipulation when serving static resources; this makes it easier to write HTTP caching response headers.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We will be now focusing on stabilizing APIs and behavior before the GA release in November.&lt;/p&gt;
+&lt;h2 id=&quot;whats-next&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#whats-next&quot; aria-label=&quot;whats next permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;What&apos;s next&lt;/h2&gt;
+&lt;p&gt;Check out our &lt;a href=&quot;https://github.com/spring-projects/spring-framework/wiki/What&amp;#x27;s-New-in-Spring-Framework-6.x&quot;&gt;What&apos;s New page&lt;/a&gt; for details about the specific features shipped so far.&lt;/p&gt;
+&lt;p&gt;The first Spring Boot 3.2 release candidate &lt;a href=&quot;https://calendar.spring.io/&quot;&gt;will be released next week&lt;/a&gt;.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Framework 6.0.13 available now]]></title><link>https://spring.io/blog/2023/10/12/spring-framework-6-0-13-available-now</link><guid isPermaLink="true">https://spring.io/blog/2023/10/12/spring-framework-6-0-13-available-now</guid><dc:creator><![CDATA[Brian Clozel]]></dc:creator><pubDate>Thu, 12 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I am pleased to announce that Spring Framework &lt;code&gt;6.0.13&lt;/code&gt; is available now.&lt;/p&gt;
 &lt;p&gt;Spring Framework &lt;code&gt;6.0.13&lt;/code&gt; ships with &lt;a href=&quot;https://github.com/spring-projects/spring-framework/releases/tag/v6.0.13&quot;&gt;34 fixes and documentation improvements&lt;/a&gt;, including &lt;a href=&quot;https://github.com/spring-projects/spring-framework/issues?q=is%3Aclosed+milestone%3A6.0.13+label%3A%22type%3A+regression%22&quot;&gt;7 fixes for regressions&lt;/a&gt;. This version will be shipped with Spring Boot 3.0.12 and 3.1.5, &lt;a href=&quot;https://calendar.spring.io/&quot;&gt;to be released next week&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;We expect the next set of Spring Framework maintenance releases to ship next November, along with the new and exciting 6.1.0 we have been working on the last few months.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-framework/&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-framework&quot;&gt;GitHub&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-framework/issues&quot;&gt;Issues&lt;/a&gt; | &lt;a href=&quot;https://docs.spring.io/spring-framework/reference/&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Transactional Rollback Strategies with Spring Cloud Stream and Apache Kafka]]></title><link>https://spring.io/blog/2023/10/11/transactional-rollback-strategies-with-spring-cloud-stream-and-apache-kafka</link><guid isPermaLink="true">https://spring.io/blog/2023/10/11/transactional-rollback-strategies-with-spring-cloud-stream-and-apache-kafka</guid><dc:creator><![CDATA[Soby Chacko]]></dc:creator><pubDate>Wed, 11 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;Other parts in this blog series&lt;/strong&gt;&lt;/p&gt;
@@ -356,398 +449,4 @@ class TxCode {
 &lt;p&gt;Even though we still have two separate transactions, things are atomic from an end-to-end transactional standpoint. If the Kafka publishing operation through &lt;code&gt;StreamBridge&lt;/code&gt; fails, neither JPA nor Kafka transactions perform a commit operation. Both will roll back. Similarly, both transactions still roll back if the database operation fails. However, there is always the possibility that one transaction commits and the other rolls back, so the application code must handle the de-duplication of the records to be fault-tolerant.&lt;/p&gt;
 &lt;p&gt;Another crucial component in this discussion of the &lt;strong&gt;consume-process-produce&lt;/strong&gt; pattern is that the producer needs to send the consumed record’s offset (in addition to the consumer that commits the offset) to the transaction. As we saw in the &lt;a href=&quot;https://spring.io/blog/2023/09/27/introduction-to-transactions-in-spring-cloud-stream-kafka-applications&quot;&gt;first part&lt;/a&gt; of this blog series, there is a Kafka Producer API method called &lt;code&gt;sendOffsetToTransaction&lt;/code&gt; in which the producer sends an offset (the current message’s offset + 1) for each partition through the &lt;code&gt;OffsetMetadata&lt;/code&gt; and the &lt;code&gt;ConsumerGroupMetadata&lt;/code&gt;. The applications do not need to call this low-level operation when using &lt;strong&gt;Spring Cloud Stream&lt;/strong&gt; or &lt;strong&gt;Spring for Apache Kafka&lt;/strong&gt;. The Kafka message listener container in Spring for Apache Kafka handles it automatically on behalf of the application. Although the framework calls &lt;code&gt;sendOffsetToTransaction&lt;/code&gt; on the producer before the transaction commits, sending the offsets to the transaction and the actual consumer offset commit occur atomically when the transaction coordinator commits the transaction.&lt;/p&gt;
 &lt;p&gt;With this discussion, we ventured into the various options for writing transactional Spring Cloud Stream applications that must interact with external transactional systems, such as databases, while consuming and producing to Apache Kafka.&lt;/p&gt;
-&lt;p&gt;In the next part of the series, we will look at transaction rolling back (another critical aspect when writing transactional systems) and how we can access the various Spring components while writing Spring Cloud Stream Kafka applications.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Shell 2.1.13, 3.0.8 and 3.1.4 are now available]]></title><link>https://spring.io/blog/2023/10/04/spring-shell-2-1-13-3-0-8-and-3-1-4-are-now-available</link><guid isPermaLink="true">https://spring.io/blog/2023/10/04/spring-shell-2-1-13-3-0-8-and-3-1-4-are-now-available</guid><dc:creator><![CDATA[Janne Valkealahti]]></dc:creator><pubDate>Wed, 04 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Spring Shell 2.1.13, 3.0.8 and 3.1.4 are now available&lt;/p&gt;
-&lt;p&gt;On behalf of the team and everyone who has contributed, I&apos;m happy to announce that Spring Shell &lt;code&gt;2.1.13&lt;/code&gt;, &lt;code&gt;3.0.8&lt;/code&gt; and &lt;code&gt;3.1.4&lt;/code&gt; has been released and are now available from Maven Central.&lt;/p&gt;
-&lt;p&gt;Please see the &lt;a href=&quot;https://github.com/spring-projects/spring-shell/releases/tag/v2.1.13&quot;&gt;release notes 2.1.13&lt;/a&gt;, &lt;a href=&quot;https://github.com/spring-projects/spring-shell/releases/tag/v3.0.8&quot;&gt;release notes 3.0.8&lt;/a&gt; and &lt;a href=&quot;https://github.com/spring-projects/spring-shell/releases/tag/v3.1.4&quot;&gt;release notes 3.1.4&lt;/a&gt; for more details.&lt;/p&gt;
-&lt;p&gt;Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
-&lt;h3 id=&quot;how-can-you-help&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-can-you-help&quot; aria-label=&quot;how can you help permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-shell/&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-shell&quot;&gt;GitHub&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-shell/issues&quot;&gt;Issues&lt;/a&gt; | &lt;a href=&quot;https://docs.spring.io/spring-shell/docs/3.1.4/docs/index.html&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[This Week in Spring - October 3rd, 2023]]></title><link>https://spring.io/blog/2023/10/03/this-week-in-spring-october-3rd-2023</link><guid isPermaLink="true">https://spring.io/blog/2023/10/03/this-week-in-spring-october-3rd-2023</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Tue, 03 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi Spring fans! Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! How&apos;re you doin&apos;? I&apos;ve just flown in from Singapore - where I was keynoting and presenting at SpringOne Singapore - and am now in Antwerp, Belgium for the deliriously fun Devoxx Belgium show. I&apos;ve missed this show, and it&apos;s a true pleasure to be back here! Next week, I&apos;ll be in Amsterdam, just next door, for the SpringOne Tour Amsterdam. If you&apos;re there, come out and say hi!&lt;/p&gt;
-&lt;p&gt;We&apos;ve got a lot of stuff to look at this morning, so let&apos;s dive right into it.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2023/09/28/a-bootiful-podcast-spring-ai-lead-dr-mark-pollack&quot;&gt;A Bootiful Podcast: Spring AI lead Dr. Mark Pollack&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=bbzek2j3Yz0&quot;&gt;Building a ChatGPT clone with Spring Boot, LangChain, and React in 20 minutes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://medium.com/@anilfromdit/dockerize-your-spring-boot-app-like-a-pro-d1dd0ef37b79&quot;&gt;Dockerize Your Spring Boot App Like a Pro&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Hah. This is fun! &lt;a href=&quot;https://www.youtube.com/watch?v=0QVdJcxGf1M&quot;&gt;Generate Dynamic Websites using ChatGPT and Spring AI&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;a new release of &lt;a href=&quot;https://github.com/toedter/spring-hateoas-jsonapi&quot;&gt;GitHub - toedter/spring-hateoas-jsonapi: A JSON:API media type implementation for Spring HATEOAS&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=74AEVZOBL88&quot;&gt;How To Log Outgoing HTTP Requests with Spring Rest Client and Spring Boot 3&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2023/09/27/introduction-to-transactions-in-spring-cloud-stream-kafka-applications&quot;&gt;Introduction to Transactions in Spring Cloud Stream Kafka Applications&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2023/09/29/spring-cloud-2023-0-0-m2-aka-leyton-has-been-released&quot;&gt;Spring Cloud 2023.0.0-M2 (aka Leyton) has been released&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://x.com/jimgris/status/1707824816835932410?s=12&amp;#x26;t=n-UflcIbnx1lage-TBk0Cg&quot;&gt;I&apos;ll be in Switzerland next week as well, and one of the people I am most looking forward to seeing is my friend Sam Brannen, major contributor to the JUnit project and lead of the Spring testing efforts. If you can&apos;t be there with us, you should enjoy this wonderful discussion between him and Oracle&apos;s Jim Grisanzio&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://x.com/odrotbohm/status/1707038889909641224?s=12&amp;#x26;t=n-UflcIbnx1lage-TBk0Cg&quot;&gt;this is super cool: Spring Modulith made it into the Thoughtworks Technology Radar&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://kubernetes.io/blog/2023/10/02/steering-committee-results-2023/&quot;&gt;Blog: Announcing the 2023 Steering Committee Election Results&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://kubernetes.io/blog/2023/09/26/happy-7th-birthday-kubeadm/&quot;&gt;Blog: Happy 7th Birthday kubeadm!&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Spring Cloud 2023.0.0-M2 (aka Leyton) has been released]]></title><link>https://spring.io/blog/2023/09/29/spring-cloud-2023-0-0-m2-aka-leyton-has-been-released</link><guid isPermaLink="true">https://spring.io/blog/2023/09/29/spring-cloud-2023-0-0-m2-aka-leyton-has-been-released</guid><dc:creator><![CDATA[Olga Maciaszek-Sharma]]></dc:creator><pubDate>Fri, 29 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the community, I am pleased to announce that the Milestone 2 (M2) of the &lt;a href=&quot;https://cloud.spring.io&quot;&gt;Spring Cloud 2023.0&lt;/a&gt; Release Train is available today. The release can be found in &lt;a href=&quot;https://repo.spring.io/milestone/&quot;&gt;Spring Milestone&lt;/a&gt; repository. You can check out the 2023.0 &lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-release/wiki/Spring-Cloud-2023.0-Release-Notes&quot;&gt;release notes for more information&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;notable-changes-in-the-202300-m2-release-train&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#notable-changes-in-the-202300-m2-release-train&quot; aria-label=&quot;notable changes in the 202300 m2 release train permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Notable Changes in the 2023.0.0-M2 Release Train&lt;/h2&gt;
-&lt;p&gt;In this milestone, we have migrated the documentation of all the Spring Cloud projects to Antora.&lt;/p&gt;
-&lt;p&gt;See all issues and pull requests &lt;a href=&quot;https://github.com/orgs/spring-cloud/projects/117/views/1&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&quot;spring-cloud-commons&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-cloud-commons&quot; aria-label=&quot;spring cloud commons permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Spring Cloud Commons&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Refresh Scope on restart - a feature tailored to allow adapting to environment changes on JVM Checkpoint-Restart (&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-commons/pull/1266&quot;&gt;PR 1266&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;spring-cloud-gateway&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-cloud-gateway&quot; aria-label=&quot;spring cloud gateway permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Spring Cloud Gateway&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Specify &lt;code&gt;clientRegistrationId&lt;/code&gt; in &lt;code&gt;TokenRelay&lt;/code&gt; filter. (&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-gateway/pull/2922&quot;&gt;PR 2922&lt;/a&gt;) The gateway can be used to manage many ClientRegistrations, and each route can determine which client registration to use. This is incredibly useful in scenarios where there are (for example):
-&lt;ul&gt;
-&lt;li&gt;multiple authorization servers in use simultaneously.&lt;/li&gt;
-&lt;li&gt;multiple client authentication methods in use simultaneously.&lt;/li&gt;
-&lt;li&gt;some/all downstream services require a distinct clientId, aud claim, etc.&lt;/li&gt;
-&lt;li&gt;some/all downstream services require different token formats (e.g. JWT, opaque)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;spring-cloud-openfeign&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-cloud-openfeign&quot; aria-label=&quot;spring cloud openfeign permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Spring Cloud OpenFeign&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Upgraded to Feign 12.5 (&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-openfeign/pull/907&quot;&gt;PR_907&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;spring-cloud-task&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-cloud-task&quot; aria-label=&quot;spring cloud task permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Spring Cloud Task&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Users now have the ability to query for task executions using the external execution id. (&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-task/issues/863&quot;&gt;PR_863&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;spring-cloud-function&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-cloud-function&quot; aria-label=&quot;spring cloud function permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Spring Cloud Function&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Users now have the ability to deploy REST applications as &lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-function/tree/main/spring-cloud-starter-function-web&quot;&gt;AWS Lambdas or Azure Functions&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;CRUD mappings for functions deployed as REST endpoints via &lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-function/issues/1025&quot;&gt;spring-cloud-function-web&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;spring-cloud-stream&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-cloud-stream&quot; aria-label=&quot;spring cloud stream permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Spring Cloud Stream&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Several important &lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-stream/milestone/89?closed=1&quot;&gt;bug fixes and enhancements&lt;/a&gt; primarily related to Apache Kafka binders and new Apache Pulsar binder.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The following modules were updated as part of 2023.0.0-M2:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Module&lt;/th&gt;
-&lt;th&gt;Version&lt;/th&gt;
-&lt;th&gt;Issues&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Consul&lt;/td&gt;
-&lt;td&gt;4.1.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-consul/releases/tag/v4.1.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Gateway&lt;/td&gt;
-&lt;td&gt;4.1.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-gateway/releases/tag/v4.1.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Zookeeper&lt;/td&gt;
-&lt;td&gt;4.1.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-zookeeper/releases/tag/v4.1.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Bus&lt;/td&gt;
-&lt;td&gt;4.1.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-bus/releases/tag/v4.1.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Stream&lt;/td&gt;
-&lt;td&gt;4.1.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-stream/releases/tag/v4.1.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Function&lt;/td&gt;
-&lt;td&gt;4.1.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-function/releases/tag/v4.1.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud OpenFeign&lt;/td&gt;
-&lt;td&gt;4.1.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-openfeign/releases/tag/v4.1.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Vault&lt;/td&gt;
-&lt;td&gt;4.1.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-vault/releases/tag/v4.1.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Commons&lt;/td&gt;
-&lt;td&gt;4.1.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-commons/releases/tag/v4.1.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Task&lt;/td&gt;
-&lt;td&gt;3.1.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-task/releases/tag/v3.1.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Kubernetes&lt;/td&gt;
-&lt;td&gt;3.1.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-kubernetes/releases/tag/v3.1.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Starter Build&lt;/td&gt;
-&lt;td&gt;2023.0.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-starter-build/releases/tag/v2023.0.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Config&lt;/td&gt;
-&lt;td&gt;4.1.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-config/releases/tag/v4.1.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Build&lt;/td&gt;
-&lt;td&gt;4.1.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-build/releases/tag/v4.1.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Netflix&lt;/td&gt;
-&lt;td&gt;4.1.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-netflix/releases/tag/v4.1.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud CircuitBreaker&lt;/td&gt;
-&lt;td&gt;3.1.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-circuitbreaker/releases/tag/v3.1.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Contract&lt;/td&gt;
-&lt;td&gt;4.1.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-contract/releases/tag/v4.1.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Spring Cloud Task&lt;/td&gt;
-&lt;td&gt;3.1.0-M2&lt;/td&gt;
-&lt;td&gt;(&lt;a href=&quot;https://github.com/spring-cloud/spring-cloud-contract/releases/tag/v3.1.0-M2&quot;&gt;issues&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;As always, we welcome feedback on &lt;a href=&quot;https://github.com/spring-cloud/&quot;&gt;GitHub&lt;/a&gt;, on &lt;a href=&quot;https://stackoverflow.com/questions/tagged/spring-cloud&quot;&gt;Stack Overflow&lt;/a&gt;, or on &lt;a href=&quot;https://twitter.com/SpringCloud&quot;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;To get started with Maven with a BOM (dependency management only):&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;#x3C;repositories&gt;
-    &amp;#x3C;repository&gt;
-        &amp;#x3C;id&gt;spring-milestones&amp;#x3C;/id&gt;
-        &amp;#x3C;name&gt;Spring Milestones&amp;#x3C;/name&gt;
-        &amp;#x3C;url&gt;https://repo.spring.io/milestone&amp;#x3C;/url&gt;
-        &amp;#x3C;snapshots&gt;
-            &amp;#x3C;enabled&gt;false&amp;#x3C;/enabled&gt;
-        &amp;#x3C;/snapshots&gt;
-    &amp;#x3C;/repository&gt;
-&amp;#x3C;/repositories&gt;
-&amp;#x3C;dependencyManagement&gt;
-    &amp;#x3C;dependencies&gt;
-        &amp;#x3C;dependency&gt;
-            &amp;#x3C;groupId&gt;org.springframework.cloud&amp;#x3C;/groupId&gt;
-            &amp;#x3C;artifactId&gt;spring-cloud-dependencies&amp;#x3C;/artifactId&gt;
-            &amp;#x3C;version&gt;2023.0.0-M2&amp;#x3C;/version&gt;
-            &amp;#x3C;type&gt;pom&amp;#x3C;/type&gt;
-            &amp;#x3C;scope&gt;import&amp;#x3C;/scope&gt;
-        &amp;#x3C;/dependency&gt;
-    &amp;#x3C;/dependencies&gt;
-&amp;#x3C;/dependencyManagement&gt;
-&amp;#x3C;dependencies&gt;
-    &amp;#x3C;dependency&gt;
-        &amp;#x3C;groupId&gt;org.springframework.cloud&amp;#x3C;/groupId&gt;
-        &amp;#x3C;artifactId&gt;spring-cloud-starter-config&amp;#x3C;/artifactId&gt;
-    &amp;#x3C;/dependency&gt;
-    &amp;#x3C;dependency&gt;
-        &amp;#x3C;groupId&gt;org.springframework.cloud&amp;#x3C;/groupId&gt;
-        &amp;#x3C;artifactId&gt;spring-cloud-starter-netflix-eureka-client&amp;#x3C;/artifactId&gt;
-    &amp;#x3C;/dependency&gt;
-    ...
-&amp;#x3C;/dependencies&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;or with Gradle:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-groovy&quot;&gt;plugins {
-  id &apos;java&apos;
-  id &apos;org.springframework.boot&apos; version &apos;3.2.0-M3&apos;
-  id &apos;io.spring.dependency-management&apos; version &apos;1.1.3&apos;
-}
-
-group = &apos;com.example&apos;
-version = &apos;0.0.1-SNAPSHOT&apos;
-
-java {
-  sourceCompatibility = &apos;17&apos;
-}
-
-repositories {
-  mavenCentral()
-  maven { url &apos;https://repo.spring.io/milestone&apos; }
-}
-
-ext {
-  set(&apos;springCloudVersion&apos;, &quot;2023.0.0-M2&quot;)
-}
-
-dependencies {
-  implementation &apos;org.springframework.cloud:spring-cloud-starter-config&apos;
-  implementation &apos;org.springframework.cloud:spring-cloud-starter-netflix-eureka-client&apos;
-  testImplementation &apos;org.springframework.boot:spring-boot-starter-test&apos;
-}
-
-dependencyManagement {
-  imports {
-    mavenBom &quot;org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}&quot;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;</content:encoded></item><item><title><![CDATA[Producer Initiated Transactions in Spring Cloud Stream Kafka Applications]]></title><link>https://spring.io/blog/2023/09/28/producer-initiated-transactions-in-spring-cloud-stream-kafka-applications</link><guid isPermaLink="true">https://spring.io/blog/2023/09/28/producer-initiated-transactions-in-spring-cloud-stream-kafka-applications</guid><dc:creator><![CDATA[Soby Chacko]]></dc:creator><pubDate>Thu, 28 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;Other parts in this blog series&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Part 1: &lt;a href=&quot;https://spring.io/blog/2023/09/27/introduction-to-transactions-in-spring-cloud-stream-kafka-applications&quot;&gt;Introduction to Transactions in Spring Cloud Stream Kafka Applications&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;This article is part 2 of the blog series in which we look at transactions in detail with Spring Cloud Stream and Apache Kafka. We saw a general introduction to transactions in the &lt;a href=&quot;https://spring.io/blog/2023/09/27/introduction-to-transactions-in-spring-cloud-stream-kafka-applications&quot;&gt;previous part&lt;/a&gt;, touching on the fundamental ideas. In this part of the blog series, we get to the metal by seeing a few implementation details and their practical aspects.&lt;/p&gt;
-&lt;p&gt;In this article, we largely stay on the producer&apos;s side to understand how transactions work with Spring Cloud Stream and Apache Kafka.&lt;/p&gt;
-&lt;h2 id=&quot;producers-in-spring-cloud-stream&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#producers-in-spring-cloud-stream&quot; aria-label=&quot;producers in spring cloud stream permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Producers in Spring Cloud Stream&lt;/h2&gt;
-&lt;p&gt;Before we look deeper into producer-initiated transactions, let’s get to some basics by looking at a simple producer. In Spring Cloud Stream, there are a couple of ways to write a producer (also known as a publisher in the messaging domain). If you have a use case in which you need to produce data on a schedule, you can write a &lt;code&gt;java.util.function.Supplier&lt;/code&gt; method as shown below.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;@Bean
-public Supplier&amp;#x3C;Pojo&gt; mySupplier() {
-  return () -&gt; {
-        new Pojo();
-  };
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;When providing the above Supplier as a Spring bean, as indicated in the code, Spring Cloud Stream treats it as a publisher, and, since we are under the context of Apache Kafka here, it sends the POJO record to a Kafka topic.&lt;/p&gt;
-&lt;p&gt;By default, Spring Cloud Stream invokes the supplier once each second, but you can change that schedule through configuration. See the &lt;a href=&quot;https://docs.spring.io/spring-cloud-stream/docs/current/reference/html/spring-cloud-stream.html#_polling_configuration_properties&quot;&gt;refence docs&lt;/a&gt; fore more details.&lt;/p&gt;
-&lt;p&gt;What if you don’t want to poll the supplier but want to control how often it publishes? Spring Cloud Stream provides a convenient way through the &lt;code&gt;StreamOperations&lt;/code&gt; API with its out-of-the-box implementation called &lt;code&gt;StreamBridge&lt;/code&gt;. Here is an example.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;@Autowired
-StreamBridge streamBridge;
-
-@PostMapping(&quot;/send-data&quot;)
-public void publishData() {
-   streamBridge.send(&quot;mySupplier-out-0&quot;, new Pojo());
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;In this case, the application uses a REST endpoint to trigger publishing the data through &lt;code&gt;StreamBridge&lt;/code&gt;. Since the framework does not call the function on a schedule, any external party can initiate the publishing of the data by invoking the REST endpoint.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Is it Appropriate to Use Transactions in These Basic Producers?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Now that we have seen the two strategies Spring Cloud Stream provides for publishing records, let us return to our main topic of discussion: &lt;strong&gt;transactional publishing&lt;/strong&gt;.
-Assume a scenario in which we want to ensure data integrity and gain transactional guarantees while using one or more of these producers. In that case, the question is whether we need to use transactions to achieve them in the first place. In these two examples above, how can you ensure that the records are published transactionally? The short answer is that you should refrain from using transactions for these types of publishing use cases. The publishing of the records in these examples are single-send scenarios. Using a sync producer, we can achieve the same semantic transactional guarantees. By default, the producer is asynchronous, and, when making it run in synchronous mode, the producer ensures that it writes the records to the leader and all the replicas before sending a response to the client. You can enable sync publishing by setting the &lt;code&gt;spring.cloud.stream.kafka.bindings.&amp;#x3C;binding-name&gt;.producer.sync&lt;/code&gt; property to &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;To summarize, when designing a producer-only application, use transactions judiciously. We do not recommend using transactions if you send one record at a time by using a &lt;code&gt;Supplier&lt;/code&gt; or through &lt;code&gt;StreamBridge&lt;/code&gt;, since converting the producer to run in sync mode would accomplish the same result without the transaction overhead. This discussion then leads to an interesting question. For producer-only applications, when does it become necessary to use transactions and get the benefits? As discussed in the &lt;a href=&quot;https://spring.io/blog/2023/09/27/introduction-to-transactions-in-spring-cloud-stream-kafka-applications&quot;&gt;previous part&lt;/a&gt; of this blog series, it depends entirely on the application&apos;s use case. In the context of producers, this means that we need only use transactions if we do multiple related publishings, or, in addition to publishing, we need to synchronize with an external transaction manager. The next sections of this post cover the former scenario, and the next post in this blog series covers the latter one.&lt;/p&gt;
-&lt;h2 id=&quot;enabling-transactions-in-spring-cloud-stream-kafka-binder&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#enabling-transactions-in-spring-cloud-stream-kafka-binder&quot; aria-label=&quot;enabling transactions in spring cloud stream kafka binder permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Enabling Transactions in Spring Cloud Stream Kafka Binder&lt;/h2&gt;
-&lt;p&gt;The main driver for enabling transactions in the Kafka binder for Spring Cloud Stream is a single property:  &lt;code&gt;spring.cloud.stream.kafka.binder.transaction.transaction-id-prefix&lt;/code&gt;. When this property has a valid prefix string, the Kafka binder in Spring Cloud Stream ensures that the underlying &lt;code&gt;KafkaTemplate&lt;/code&gt; publishes the data by using transactions. Incidentally, this property signals Spring Cloud Stream to make a consumer be transaction-aware while using processor patterns (&lt;strong&gt;consume-process-produce&lt;/strong&gt; or &lt;strong&gt;read-process-write&lt;/strong&gt; patterns).&lt;/p&gt;
-&lt;h2 id=&quot;transactions-in-action&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#transactions-in-action&quot; aria-label=&quot;transactions in action permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Transactions in Action&lt;/h2&gt;
-&lt;p&gt;Although counterintuitive, let us return to our single &lt;code&gt;Supplier&lt;/code&gt; or &lt;code&gt;StreamBridge&lt;/code&gt; example (described earlier) and introduce transactions to understand the primary usage of transaction components. As explained earlier, we need not use transactions in those cases, as this adds more overhead. However, doing so helps us understand things.&lt;/p&gt;
-&lt;p&gt;Here is the code again:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;@SpringBootApplication
-@RestController
-public class SimpleSpringCloudStreamProducer {
-
-  @Bean
-  public Supplier&amp;#x3C;Pojo&gt; mySupplier() {
-    return () -&gt; {
-      new Pojo();
-    };
-  }
-
-  @Autowired
-  StreamBridge streamBridge;
-
-  @PostMapping(&quot;/send-data&quot;)
-  public void publishData() {
-   streamBridge.send(&quot;mySupplier-out-0&quot;, new Pojo());
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Let us now provide the required property.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;spring.cloud.stream.kafka.binder.transaction.transaction-id-prefix: my-transactional-producer-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Since we are providing the property in the application’s configuration, each time the supplier in this example is invoked (through the framework) or someone calls the REST endpoint behind the &lt;code&gt;StreamBridge#send&lt;/code&gt; method, the underlying publishing to Kafka topic becomes fully transactional.&lt;/p&gt;
-&lt;p&gt;When the supplier is triggered, the Kafka binder uses a &lt;code&gt;KafkaTemplate&lt;/code&gt; to publish the data. When the binder detects that the application provides the &lt;code&gt;transaction-id-prefix&lt;/code&gt; property, each &lt;code&gt;KafkaTemplate#send&lt;/code&gt; invocation is done through the &lt;code&gt;KafkaTemplate#executeInTransaction&lt;/code&gt; method. Thus, rest assured that the frameworks do the underlying publishing to the Kafka topic transactionally. From an application perspective, the only thing the app developer needs to provide for transaction purposes is the &lt;code&gt;transaction-id-prefix&lt;/code&gt; property.&lt;/p&gt;
-&lt;p&gt;Setting the logging level to &lt;code&gt;TRACE&lt;/code&gt; is often worthwhile when developing or debugging transactional applications so that the relevant underlying transactional classes can provide us with details about what’s happening.&lt;/p&gt;
-&lt;p&gt;For example, if you set the logging level to TRACE on the following packages, you will see quite a lot of activity in the logs.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;logging:
- level:
-   org.springframework.transaction: TRACE
-   org.springframework.kafka.transaction: TRACE
-   org.springframework.kafka.producer: TRACE
-   org.springframework.kafka.core: TRACE
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;We can observe the following in the logs each time the framework calls the supplier method:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;o.s.k.core.DefaultKafkaProducerFactory   : CloseSafeProducer [delegate=org.apache.kafka.clients.producer.KafkaProducer@1426370c] beginTransaction()
-o.s.kafka.core.KafkaTemplate             : Sending: ProducerRecord
-o.s.kafka.core.KafkaTemplate             : Sent: ProducerRecord(topic=myTopic1, partition=null, headers=RecordHeaders(headers = …
-o.s.k.core.DefaultKafkaProducerFactory   : CloseSafeProducer [delegate=org.apache.kafka.clients.producer.KafkaProducer@1426370c] commitTransaction()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;As you can see from the trace logs, each time it publishes the record transactionally, it forms a sequence: &lt;strong&gt;beginTransaction&lt;/strong&gt;, &lt;strong&gt;Sending&lt;/strong&gt;, &lt;strong&gt;Sent&lt;/strong&gt;, and &lt;strong&gt;commitTransaction&lt;/strong&gt;. If you run the application, you will observe that you see these sequences every second since that is the default schedule for how often Spring Cloud Stream invokes a &lt;code&gt;Supplier&lt;/code&gt; method.&lt;/p&gt;
-&lt;p&gt;The same transactional flow applies to the &lt;code&gt;StreamBridge#send&lt;/code&gt; case also. When Spring Cloud Stream calls the send method, the underlying &lt;code&gt;KafkaTemplate&lt;/code&gt; that the output binding uses ensures that the record publishes within a transaction, since we provide the &lt;code&gt;transaction-id-prefix&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;transactions-with-multiple-record-publishing&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#transactions-with-multiple-record-publishing&quot; aria-label=&quot;transactions with multiple record publishing permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Transactions with multiple record publishing&lt;/h2&gt;
-&lt;p&gt;With that primer out of the way, let’s move on to cases where it makes sense to use transactions. As we discussed before, the need to publish multiple records as a single atomic unit is a valid scenario where using transactions becomes necessary.&lt;/p&gt;
-&lt;p&gt;Let’s look at the following code example:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;public void publish(StreamBridge streamBridge {
-  for (int i = 0; i &amp;#x3C; 5; i++) {
-    streamBridge.send(&quot;mySupplier-out-0&quot;, &quot;data-&quot; + i);
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;As you can see, this is a contrived example to demonstrate what is at stake. Instead of publishing once, we publish multiple records. Publishing to multiple topics is also an equally valid approach here. We might think that we can quickly wrap the publishing of multiple records within a single transaction by setting the &lt;code&gt;transaction-id-prefix&lt;/code&gt; property. However, we need more than this to help us here. We still need to provide the prefix property. However, with just that, each send still occurs in its dedicated transaction. To ensure that the whole end-to-end publishing of all five records happens atomically, we need to apply the &lt;code&gt;@Transactional&lt;/code&gt; annotation from the core Spring Framework on the method. In addition, we must provide a transaction manager bean - &lt;code&gt;KafkaTransactionManager&lt;/code&gt; -  that uses the same producer factory created by the Spring Cloud Stream Kafka binder. Here is how our code looks like now and the application&apos;s configuration:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;@SpringBootApplication
-@RestController
-public class SpringCloudStreamProducer {
-
-   @Autowired
-   StreamBridge streamBridge;
-
-   @Autowired Sender sender;
-
-   @Autowired
-   DefaultBinderFactory binderFactory;
-
-   public static void main(String[] args) {
-       SpringApplication.run(SpringCloudStreamProducer.class, args);
-   }
-
-   @PostMapping(&quot;/send-data&quot;)
-   public void publishData() throws InterruptedException {
-       sender.send(streamBridge);
-   }
-
-   @Component
-   static class Sender {
-
-     @Transactional        
-     public void send(StreamBridge streamBridge)      
-     {
-       for (int i = 0; i &amp;#x3C; 5; i++) {
-     	   streamBridge.send(&quot;mySupplier-out-0&quot;, &quot;data-&quot; + i);           
-       }
-     }
-   }
-
-  @Bean
-  KafkaTransactionManager customKafkaTransactionManager() {
-     KafkaMessageChannelBinder kafka = (KafkaMessageChannelBinder)this.binderFactory.getBinder(&quot;kafka&quot;, MessageChannel.class);
-     ProducerFactory&amp;#x3C;byte[], byte[]&gt; transactionalProducerFactory = kafka.getTransactionalProducerFactory();
-     KafkaTransactionManager kafkaTransactionManager = new KafkaTransactionManager(transactionalProducerFactory);
-     return kafkaTransactionManager;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;And the corresponding configuration:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;spring:
-  cloud:
-   stream:
-     bindings:
-       mySupplier-out-0:
-         destination: my-topic
-     kafka:
-       binder:
-         Transaction:
-		transaction-id-prefix: mySupplier-
-producer:
-             configuration:
-               retries: 1
-               acks: all
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Note that the transactional method (the method annotated with &lt;code&gt;@Transactional&lt;/code&gt;) in the preceding code must be in a different class from the one invoking the method. If the invocation is between the methods on the same class or between different classes that are not Spring-managed beans, there is no proxy, and the transaction interceptor does not kick in. The JVM does not know about the proxying and interceptor mechanism at runtime. When adding the &lt;code&gt;@Transactional&lt;/code&gt; annotation on a method, Spring creates a transactional proxy for that method behind the scenes. When Spring Cloud Stream invokes the transactional method, the proxy intercepts that call and then the actual invocation happens through the proxied object.&lt;/p&gt;
-&lt;p&gt;The custom &lt;code&gt;KafkaTransactionManager&lt;/code&gt; bean we provide serves two purposes. First, it makes Spring Boot apply &lt;code&gt;@EnableTransactionManagerment&lt;/code&gt;. It also provides the same producer factory the binder uses internally so that the Transactional annotation uses the proper resources when applying transactions.&lt;/p&gt;
-&lt;p&gt;When Spring Boot detects an available transaction manager bean, it automatically applies the &lt;code&gt;@EnableTransactionManagement&lt;/code&gt; annotation for us, which is responsible for detecting the &lt;code&gt;@Transactional&lt;/code&gt; annotation and then adding the interceptor through the Spring AOP proxy and advice mechanism. In other words, Spring AOP creates a proxy for the &lt;code&gt;@Transactional&lt;/code&gt; method and includes the AOP advice. Without the &lt;code&gt;@EnableTransactionManagement&lt;/code&gt; annotation applied, Spring does not trigger any of these proxying and interception mechanisms. Since the &lt;code&gt;EnableTransactionManagement&lt;/code&gt; annotation is crucial for these various reasons, we must provide a transaction manager bean. Otherwise, the &lt;code&gt;Transactional&lt;/code&gt; annotation on the method has no bearings.&lt;/p&gt;
-&lt;p&gt;Note that we are getting the transactional producer factory from the binder and using that in the constructor for &lt;code&gt;KafkaTransactionManager&lt;/code&gt;. When this bean is present in the application, the entire publishing of all the records now happens within the scope of a single transaction. We see only a single sequence of &lt;strong&gt;beginTransaction…commitTransaction&lt;/strong&gt; in the trace logs, which means that only one proper transaction carries out all the publishing operations.&lt;/p&gt;
-&lt;p&gt;Behind the scenes, these are the sequence of events:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;As soon as the method annotated with &lt;code&gt;Transactional&lt;/code&gt; is called, the transaction interceptor kicks in through the AOP proxying mechanism, and it starts a new transaction by using the custom &lt;code&gt;KafkaTransactionManager&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;When the transaction manager begins the transaction, the resource used by the transaction manager - the transactional resource holder (AKA, producer obtained from the producer factory) - is bound to the transaction.&lt;/li&gt;
-&lt;li&gt;When the method calls the &lt;code&gt;StreamBridge#send&lt;/code&gt; method, the underlying &lt;code&gt;KafkaTemplate&lt;/code&gt; will use the same transactional resource created by the custom &lt;code&gt;KafkaTransactionManager&lt;/code&gt;. Since a transaction is already in progress, it does not start another transaction, but the publishing occurs on the same transactional producer.&lt;/li&gt;
-&lt;li&gt;As it calls more &lt;code&gt;send&lt;/code&gt; methods, it will not start new transactions. Instead, it publishes via the same producer resource used in the original transaction.&lt;/li&gt;
-&lt;li&gt;When the method exits, the interceptor asks the transaction manager to commit the transaction if there is no error. If any of the send operations or anything else in the method throws an exception, the interceptor asks the transaction manager to roll back the transaction. These calls eventually hit the &lt;code&gt;KafkaResourceHolder&lt;/code&gt; &lt;strong&gt;commit&lt;/strong&gt; or &lt;strong&gt;rollback&lt;/strong&gt; methods, which calls the Kafka producer to &lt;strong&gt;commit&lt;/strong&gt; or &lt;strong&gt;rollback&lt;/strong&gt; the transaction.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Since we only have one custom &lt;code&gt;KafkaTransactionManager&lt;/code&gt; bean in our example, we can simply use the &lt;code&gt;Transactional&lt;/code&gt; annotation as is. On the other hand,  if we had multiple custom &lt;code&gt;KafkaTransactionManager&lt;/code&gt; beans, we would have to qualify the &lt;code&gt;@Transactional&lt;/code&gt; annotation with the correct bean name.&lt;/p&gt;
-&lt;h2 id=&quot;what-if-we-run-the-app-without-the-custom-kafkatransactionmanager&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#what-if-we-run-the-app-without-the-custom-kafkatransactionmanager&quot; aria-label=&quot;what if we run the app without the custom kafkatransactionmanager permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;What if we run the app without the custom KafkaTransactionManager?&lt;/h2&gt;
-&lt;p&gt;If we remove the custom &lt;code&gt;KafkaTransactionManager&lt;/code&gt; and run this application, you can see that it creates five individual transactions, not a single transaction. If you enable &lt;code&gt;TRACE&lt;/code&gt; logging, you can see five sequences of &lt;strong&gt;beginTransaction…commitTransaction&lt;/strong&gt; in the logs.&lt;/p&gt;
-&lt;p&gt;You can verify this behavior by writing a transactional consumer Spring Cloud Stream application and setting its isolation level to &lt;code&gt;read_committed&lt;/code&gt;. You can do so by using the &lt;code&gt;spring.cloud.stream.kafka.binder.configuration.isolation.level&lt;/code&gt; property and setting its value to &lt;code&gt;read_committed&lt;/code&gt;. For testing purposes, add a &lt;code&gt;Thread.sleep&lt;/code&gt; or another wait mechanism to simulate the behavior after each &lt;code&gt;StreamBridge#send&lt;/code&gt; in the for loop. You can see that, as soon as each &lt;code&gt;send&lt;/code&gt; method call returns, regardless of the wait, the consumer receives data, thus proving that not a single transaction carried out the entire operation, rather each &lt;code&gt;send&lt;/code&gt; occurred in its own transaction.&lt;/p&gt;
-&lt;p&gt;We see individual transactions for each send because the &lt;code&gt;Transactional&lt;/code&gt; annotation does not do what we expect it to do. The &lt;code&gt;Transactional&lt;/code&gt; annotation works only if there is a transaction manager bean available and its producer factory is the same one used by the binder.&lt;/p&gt;
-&lt;p&gt;Spring Boot auto-configures a &lt;code&gt;KafkaTransactionManager&lt;/code&gt; if it detects the &lt;code&gt;transaction-id-prefix&lt;/code&gt; property in the configuration through &lt;code&gt;spring.kafka.producer.transaction-id-prefix&lt;/code&gt;. However, since we are in a Spring Cloud Stream context, we must use &lt;code&gt;spring.cloud.stream.kafka.binder.transaction.transaction-id-prefix&lt;/code&gt;, since this is how we signal the framework to create an internal transaction manager for the binder and the associated transactional producer factory. What if we provide the proper &lt;code&gt;spring.kafka&lt;/code&gt; prefix so that Spring Boot auto-configures a &lt;code&gt;KakaTransactionManager&lt;/code&gt; for us? Although that is very tempting, it does not work, as the auto-configured transaction manager uses a different producer factory from the one that the binder uses. Thus, we must provide a custom &lt;code&gt;KafkaTransactionManager&lt;/code&gt; that uses the same producer factory the binder uses. This is precisely what we did above.&lt;/p&gt;
-&lt;p&gt;In the next part of this blog series, we will learn how to synchronize with external transaction managers for both producer and consumer-initiated transactions.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[A Bootiful Podcast: Spring AI lead Dr. Mark Pollack]]></title><link>https://spring.io/blog/2023/09/28/a-bootiful-podcast-spring-ai-lead-dr-mark-pollack</link><guid isPermaLink="true">https://spring.io/blog/2023/09/28/a-bootiful-podcast-spring-ai-lead-dr-mark-pollack</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Thu, 28 Sep 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! In this episode I talk to Dr. Mark Pollack, lead of the new Spring AI project. This episode was recorded live at SpringOne at VMware Explore 2023, in Las Vegas.&lt;/p&gt;
-&lt;iframe title=&quot;Spring AI lead Dr. Mark Pollack&quot; allowtransparency=&quot;true&quot; height=&quot;150&quot; width=&quot;100%&quot; style=&quot;border: none; min-width: min(100%, 430px);height:150px;&quot; scrolling=&quot;no&quot; data-name=&quot;pb-iframe-player&quot; src=&quot;https://www.podbean.com/player-v2/?i=ppwr4-14b84f8-pb&amp;from=pb6admin&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Arial&amp;skin=1&amp;font-color=&amp;logo_link=episode_page&amp;btn-skin=7&quot; loading=&quot;lazy&quot;&gt;&lt;/iframe&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;In the next part of the series, we will look at transaction rolling back (another critical aspect when writing transactional systems) and how we can access the various Spring components while writing Spring Cloud Stream Kafka applications.&lt;/p&gt;</content:encoded></item></channel></rss>

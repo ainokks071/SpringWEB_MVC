@@ -57,7 +57,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/memberContent.do")
-	public String memberContent(Model model, int num) {
+	public String memberContent(@RequestParam("num") int num, Model model) {
 		MemberVO vo = memberMapper.memberContent(num);
 		model.addAttribute("vo", vo);
 		return "memberContent";
