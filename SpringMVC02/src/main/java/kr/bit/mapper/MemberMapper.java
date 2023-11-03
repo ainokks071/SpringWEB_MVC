@@ -11,12 +11,15 @@ import org.apache.ibatis.annotations.Update;
 import kr.bit.model.MemberVO;
 
 //인터페이스 : 추상메서드 집합 (기능 정의만! 구현X)
-// DAO -> MapperInterface로 교체 : mapper.xml과 연결되어 있다. how? (메서드 이름 = xml의 "id", namespace참조.)
-// SqlSessionFactory + SqlSession 객체 불러와서 작업. 
-// root-context.xml의 <mybatis:scan base-package="kr.bit.mapper" />에 의해 MapperInterface 이용 가능.
+// DAO -> MapperInterface로 교체
 
-// mapper.xml파일 이용하지않고 메서드마다 (어노테이션+쿼리)를 작성해도 된다. 
+// 1. maaper.xml파일 사용 : mapper.xml(SQL쿼리문 )과 연결되어 있다. 
+//    -> how? (메서드 이름 = xml의 "id", namespace참조.)
+// 2. mapper.xml파일 사용X -> 어노테이션 이용 : 메서드마다 (어노테이션 + 쿼리)를 작성. 
 //  -> 이때에는 mapper.xml파일을 삭제하거나 다른 패키지로 이동시켜야함. 
+//  -> how? root-context.xml의 <mybatis:scan base-package="kr.bit.mapper" />에 의해 MapperInterface 이용 가능.
+
+// SqlSessionFactory + SqlSession 객체 불러와서 작업. 
 
 // @Mapper는 생략 가능.
 

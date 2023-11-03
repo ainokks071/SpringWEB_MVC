@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app 
-	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app.xsd"
-	version="4.0"> 
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app.xsd"> 
 	
 	<!--한글 깨짐 처리 : DispatcherServlet(FrontController)로 요청이 오기 전, 인코딩 filtering 처리 -->
 	<filter> 
@@ -48,6 +46,4 @@
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 	
-	
-
 </web-app>

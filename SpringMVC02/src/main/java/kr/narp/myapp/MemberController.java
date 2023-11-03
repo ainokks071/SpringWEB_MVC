@@ -15,16 +15,16 @@ import kr.bit.model.MemberVO;
 // @(어노테이션 : 전처리) -> SpringContainer에 미리 객체(bean)가 생성되어 관리를 해준다.
 @Controller
 public class MemberController {
-	// 스프링 컨테이너에 bean으로 등록되어있는 DAO 가져다 쓴다. DI(의존성 주입) : 의존관계 느슨하게..
-	// (cf. DAO는 root-context.xml에 기술된대로 component scan에 의해 빈으로 등록되어있다.)
+	// 스프링 컨테이너에 bean으로 등록되어있는 DAO(-> Mapper로 교체) 가져다 쓴다. DI(의존성 주입) : 의존관계 느슨하게..
+	// (cf. DAO/Mapper는 root-context.xml에 기술된대로 component scan에 의해 빈으로 등록되어있다.)
 	// autowired : 의존성 주입. new 사용 X. 외부로부터 주입받는다.
 	// new 사용 X : MemberDAO dao = new MemberDAO();
 //	@Autowired
 //	private MemberDAO dao;
 	
+//	DAO -> Mapper로 교체.
 	@Autowired
 	private MemberMapper memberMapper;
-	
 	
 	// Model(스프링에서 제공해주는 객체바인딩역할 클래스) = HttpServletRequest 
 	// 메서드의 매개변수로 선언해놓으면 자동으로 주입받는다. 

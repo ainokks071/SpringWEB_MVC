@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   https://www.springframework.org/schema/beans/spring-beans.xsd 
+	   http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd 
+	   http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd ">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- root-context.xml : ContextLoaderListener에 의해 읽힘. --> 
+	
+	<!-- 1. db.properties파일(DB 접속정보) 연결! -->
+	<!-- 의미 : propertyPlaceholderConfigurer객체(bean) 생성 -> locations에 /WEB-INF/mybatis/db.properties 대입하여 파일연결. 
+															: setLocations(value)형태 -->
+	<bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="/WEB-INF/mybatis/db.properties" />
+	</bean>
+	
+	<!-- 2. jdbc(dataSource) 연결! ; 위의 db.properties 접속정보내용 가져온다.(내부적으로 연결되어있음.)-->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="${driver}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+	</bean>
+	
+	<!-- 3. Mybatis SqlSessionfactory 생성!(가장 중요) cf)) 과거엔 DAO에서 SqlSessionfactory생성했었다!
+			(+ config.xml연결(type Alias만 사용.), mapper.xml(SQL문 작성)연결)-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="/WEB-INF/mybatis/config.xml" />
+<!-- 		<property name="mapperLocations" value="classpath:kr/bit/mybatis/*.xml" />	-->	
+    </bean>
+	
+	<!-- kr.bit.model패키지 내 모든 클래스의 어노테이션 스캔 -> 컨테이너에 미리 bean으로 등록(DAO, VO) -->
+<!-- 	<context:component-scan base-package="kr.bit.model" /> DAO 사용 X		-->	
+
+	<!-- kr.inflearn.mapper패키지 내 모든 어노테이션 스캔.(DAO -> Mapper로 교체 ) -->	
+	<mybatis:scan base-package="kr.inflearn.mapper" />
+		
+</beans>

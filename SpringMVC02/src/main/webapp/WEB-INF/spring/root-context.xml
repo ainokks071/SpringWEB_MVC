@@ -38,7 +38,7 @@
 	<!-- kr.bit.model패키지 내 모든 클래스의 어노테이션 스캔 -> 컨테이너에 미리 bean으로 등록(DAO, VO) -->
 	<context:component-scan base-package="kr.bit.model" />
 	
-	<!-- kr.bit.mapper패키지 내 모든 어노테이션 스캔. -->
+	<!-- kr.bit.mapper패키지 내 모든 어노테이션 스캔.(DAO -> Mapper로 교체 ) -->
 	<mybatis:scan base-package="kr.bit.mapper" />
 	
 </beans>
