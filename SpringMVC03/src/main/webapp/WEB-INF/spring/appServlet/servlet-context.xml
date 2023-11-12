@@ -21,7 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<!-- 각 패키지의 어노테이션 스캔해서 메모리에 객체bean 올려 -->
+	<!-- 각 패키지의 어노테이션 스캔해서 메모리(스프링 컨테이너)에 객체bean 생성해서 올려 -->
 	<context:component-scan base-package="kr.inflearn.web" />
 	<context:component-scan base-package="kr.inflearn.service" />
 	

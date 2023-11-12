@@ -38,7 +38,9 @@
 	<!-- kr.bit.model패키지 내 모든 클래스의 어노테이션 스캔 -> 컨테이너에 미리 bean으로 등록(DAO, VO) -->
 <!-- 	<context:component-scan base-package="kr.bit.model" /> DAO 사용 X		-->	
 
-	<!-- kr.inflearn.mapper패키지 내 모든 어노테이션 스캔.(DAO -> Mapper로 교체 ) -->	
+	<!-- kr.inflearn.mapper패키지 내 모든 어노테이션 스캔.(DAO -> Mapper로 교체 ) 
+		 @Mapper 어노테이션을 인식하여, 최종적으로 MapperInterface와 Mapper.xml파일을 연결해준다.
+		 + mapperInterface 객체를 컨테이너에 생성해놓는다. bean -->	
 	<mybatis:scan base-package="kr.inflearn.mapper" />
 		
 </beans>

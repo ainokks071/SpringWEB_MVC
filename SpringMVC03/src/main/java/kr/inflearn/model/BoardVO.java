@@ -1,5 +1,7 @@
 package kr.inflearn.model;
 
+import java.util.Date;
+
 public class BoardVO {
 // ** Board 테이블의 컬럼명과 일치
 //create table tb_board (
@@ -16,7 +18,7 @@ public class BoardVO {
 	private String contents;
 	private int count;
 	private String writer; 
-	private String indate;
+	private Date indate;
 	
 	public int getIdx() {
 		return idx;
@@ -48,10 +50,10 @@ public class BoardVO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public String getIndate() {
+	public Date getIndate() {
 		return indate;
 	}
-	public void setIndate(String indate) {
+	public void setIndate(Date indate) {
 		this.indate = indate;
 	}
 	

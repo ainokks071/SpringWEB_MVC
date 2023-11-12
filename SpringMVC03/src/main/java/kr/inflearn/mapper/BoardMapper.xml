@@ -12,7 +12,7 @@
   -->
   
   <select id="getList" resultType="boardVO">
-    select * from tb_board
+    select * from tb_board order by idx desc
   </select>
   
   <insert id="insert" parameterType="boardVO">
@@ -25,12 +25,17 @@
   </select>
   
   <delete id="delete" parameterType="Integer">
-    delete from tb_board where idx=#{idx}
+  	delete from tb_board where idx=#{idx}
   </delete>
   
   <update id="update" parameterType="boardVO">
     update tb_board set title=#{title}, contents=#{contents}
     where idx=#{idx}
+  </update>
+  
+  <update id="count" parameterType="Integer">
+    update tb_board set count = count + 1 
+    where idx = #{idx}
   </update>
   
 </mapper>
