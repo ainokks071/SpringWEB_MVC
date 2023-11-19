@@ -23,7 +23,7 @@ import kr.inflearn.service.BoardService;
 @Controller
 public class BoardController {
 	
-	@Autowired
+	@Autowired 
 	private BoardService boardService;
 	
 // http://localhost:8080/board/boardList.do
