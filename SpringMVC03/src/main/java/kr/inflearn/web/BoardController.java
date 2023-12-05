@@ -1,5 +1,4 @@
 package kr.inflearn.web;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,7 @@ import kr.inflearn.service.BoardService;
 //servlet-context.xml
 //<context:component-scan base-package="kr.inflearn.web" />
 //어노테이션 스캔 + 컨테이너에 객체bean생성
-
+  	 
 // 웹, 프리젠테이션 계층
 //POJO(Controller)의 역할? -> Service(->Mapper, DAO)연동, Data를 Model에 객체바인딩, 포워딩 
 @Controller
