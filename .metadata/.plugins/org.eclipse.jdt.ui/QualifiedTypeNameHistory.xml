@@ -39,4 +39,5 @@
     <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Mapper"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Update"/>
     <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="kr.board.entity.Board"/>
 </qualifiedTypeNameHistroy>
