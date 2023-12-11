@@ -19,7 +19,22 @@ import kr.board.entity.Board;
 public interface BoardMapper {	 
 	
 //	게시판 전체목록 조회
-     public List<Board> getList();
+    public List<Board> getList();
+
+//	게시물 등록
+	public void boardInsert(Board vo);
+
+//	게시물 상세보기
+	public Board boardContent(int idx);
+
+//	게시물 삭제하기
+	public void boardDelete(int idx);
+
+//	게시물 수정하기
+	public void boardUpdate(Board vo);
+
+//	게시물 조회수 1 증가 
+	public void boardCount(int idx);
 
      
 //     public void boardInsert(Board vo);

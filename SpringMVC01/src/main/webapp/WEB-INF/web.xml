@@ -2,7 +2,8 @@
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app.xsd"> 
-	<!-- 한글 깨짐 방지 처리 : 이 설정은 프로젝트의 모든 **요청과 응답**에 대해 UTF-8 인코딩을 강제합니다.  -->
+	<!-- 한글 깨짐 방지 처리 : 이 설정은 프로젝트의 모든 **요청과 응답**에 대해 UTF-8 인코딩을 강제합니다.  
+	게시물 글쓰기 시, DB에 저장되는 한글 데이터 처리 ! -->
 	<filter>
 	    <filter-name>encodingFilter</filter-name>
 	    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -15,7 +16,6 @@
 	        <param-value>true</param-value>
 	    </init-param>
 	</filter>
-	
 	
 	<filter-mapping>
 	    <filter-name>encodingFilter</filter-name>
@@ -46,7 +46,8 @@
 		
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<url-pattern>*.do</url-pattern>
+<!-- 	수정전 :	<url-pattern>*.do</url-pattern> : 바꾸지 않으면, @PathVariable에서 404에러-->
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
 </web-app>

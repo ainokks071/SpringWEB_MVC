@@ -5,27 +5,31 @@
   
   <!--id : MapperInterface내부의 메서드 이름, resultType : Entity -->
   <select id="getList" resultType="kr.board.entity.Board">
- 	SELECT * FROM myboard ORDER BY idx ASC
+ 	select * from myboard order by idx asc
 	<!--select * from myboard order by idx desc-->  
   </select>
   
-<!-- 
+  <!-- #으로 BoardVO에 저장된, 클라이언트가 입력한 데이터 추출. -->
   <insert id="boardInsert" parameterType="kr.board.entity.Board">
-    insert into tb_board(title,content,writer)
-    values(#{title},#{content},#{writer})
+    insert into myboard(title, content, writer)
+    values(#{title}, #{content}, #{writer}) 
   </insert>
   
-  <select id="boardContent" resultType="kr.board.entity.Board">
-     select * from tb_board where idx=#{idx}
+  <!-- parameterType int형 하나일 때 생략 가능 -->
+  <select id="boardContent" parameterType="Integer" resultType="kr.board.entity.Board">
+ 	select * from myboard where idx = #{idx}
   </select>
   
-  <delete id="boardDelete" parameterType="int">
-     delete from tb_board wh ere idx=#{idx}
+  <delete id="boardDelete" parameterType="Integer">
+    delete from myboard where idx = #{idx}
   </delete>
   
   <update id="boardUpdate" parameterType="kr.board.entity.Board">
-     update tb_board set title=#{title}, content=#{content}
-     where idx=#{idx}
+  	update myboard set title=#{title}, content=#{content} where idx=#{idx} 
   </update>
- -->  
+  
+  <update id="boardCount" parameterType="Integer">
+    update myboard set count = count + 1 where idx = #{idx} 
+  </update>
+    
 </mapper>

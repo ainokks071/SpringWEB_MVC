@@ -17,29 +17,30 @@
 <div class="container">
   <h2>Spring MVC01</h2>
   <div class="panel panel-default">
-    <div class="panel-heading">BOARD</div>
+    <div class="panel-heading">BOARD LIST</div>
     <div class="panel-body">
        <table class="table table-bordered table-hover">
           <tr>
-            <td>번호</td>
-            <td>제목</td>
-            <td>작성자</td>
-            <td>작성일</td>
-            <td>조회수</td>
+	          <td>번호</td>
+	          <td>제목</td>
+	          <td>작성자</td>
+	          <td>작성일</td>
+	          <td>조회수</td>
           </tr>
           
           <c:forEach items="${list}" var="vo">
           <tr>
-          <td>${vo.idx}</td>
-          <td>${vo.content}</td>
-          <td>${vo.writer}</td>
-          <td>${vo.indate}</td>
-          <td>${vo.count}</td>
+	          <td>${vo.idx}</td>
+	          <!--QueryString : GET방식으로 vo.idx의 값 전달 -> @RequestParam("idx")로 수집  -->
+	          <td><a href="boardContent.do?idx=${vo.idx}">${vo.title}</a></td>
+	          <td>${vo.writer}</td>
+	          <td>${vo.indate}</td>
+	          <td>${vo.count}</td>
           </tr>
           </c:forEach>
-          
-          
-       </table>    
+       </table>
+       <!-- '/boardForm.do' : 슬래쉬O = 절대경로 -> localhost8080/boardForm.do (X) -->    
+       <button class="btn btn-sm btn-primary" onclick="location.href='boardForm.do'">글쓰기 페이지로</button>    
     </div>
     <div class="panel-footer">인프런_스프1탄_박매일</div>
   </div>
