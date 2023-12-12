@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   https://www.springframework.org/schema/beans/spring-beans.xsd 
+	   http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd 
+	   http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd ">
+	<!-- root-context.xml : ContextLoaderListener에 의해 읽힘. --> 
+	<!-- xml파일에서 객체 생성하는 방법
+	<bean id="a" class="A">
+		<property name="b" value="c"/>
+	</bean>
+	
+	위 bean태그는 A a = new A();와 동일하다.
+ 	위 property태그는 a.setB("c");와 동일하다. setter()를 사용하여 값 초기화.
+	 -->
+	
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- HikariCP API 사용하여 Connection POOL 만들기  -->
+	
+	<!-- HikariConfig객체 : DB 접속 정보 포함하고 있는 객체 -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test"/>
+		<property name="username" value="root"/>
+		<property name="password" value="dkssud123"/>
+	</bean>
+    
+    <!--HikariDataSource객체 : Connection POOL 만든다.  -->
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+      <!--ref : 위의 hikariConfig객체(DB접속 정보 포함 객체)를 참조하겠다.  -->
+      <constructor-arg ref="hikariConfig" />
+    </bean>
+ 
+ 	<!-- MapperInterface의 구현 클래스 = SqlSessionFactoryBean : SQL CRUD메서드 사용 가능  -->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+    	<!-- dataSource 참조 : Connection POOL 참조 ! -->
+       <property name="dataSource" ref="dataSource" />
+    </bean>
+	
+    <!-- scan : MapperInterface를 메모리에 로딩 
+	     kr.board.mapper패키지 내 모든 어노테이션 스캔. 
+		 @Mapper 어노테이션을 인식하여, 최종적으로 MapperInterface와 Mapper.xml파일을 연결해준다. -->
+	<mybatis-spring:scan base-package="kr.board.mapper"/>
+		
+</beans>

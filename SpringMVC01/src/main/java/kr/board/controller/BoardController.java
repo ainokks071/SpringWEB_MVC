@@ -58,7 +58,7 @@ public class BoardController{	// new BoardController(); by scan -> SpringContain
 	
 //	게시판 전체 목록에서 제목 클릭하여 상세화면 조회 + 게시물 조회수 1 증가
 	@GetMapping("/boardContent.do")
-	public String boardContent(Model model, @RequestParam("idx") int idx) {
+	public String boardContent(@RequestParam("idx") int idx, Model model) {
 //		vo.setCount(vo.getCount() + 1);  ->  count db에서 변경 X 
 //		순서 1 : update 쿼리 필요 -> 게시물 조회수 1 증가
 		mapper.boardCount(idx);

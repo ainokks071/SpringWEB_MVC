@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- namespace : MapperInterface와 Mapper.xml 연결 !-->
+<mapper namespace="kr.board.mapper.BoardMapper">
+  
+  <!--id : MapperInterface내부의 메서드 이름, resultType : Entity -->
+  <select id="boardList" resultType="kr.board.entity.Board">
+ 	select * from myboard order by idx asc
+	<!--select * from myboard order by idx desc-->  
+  </select>
+  
+  <!-- #으로 BoardVO에 저장된, 클라이언트가 입력한 데이터 추출. -->
+  <insert id="boardInsert" parameterType="kr.board.entity.Board">
+    insert into myboard(title, content, writer)
+    values(#{title}, #{content}, #{writer}) 
+  </insert>
+  
+  <!-- parameterType int형 하나일 때 생략 가능 -->
+  <select id="boardContent" parameterType="Integer" resultType="kr.board.entity.Board">
+ 	select * from myboard where idx = #{idx}
+  </select>
+  
+  <delete id="boardDelete" parameterType="Integer">
+    delete from myboard where idx = #{idx}
+  </delete>
+  
+  <update id="boardUpdate" parameterType="kr.board.entity.Board">
+  	update myboard set title=#{title}, content=#{content} where idx=#{idx} 
+  </update>
+  
+<!-- 어노테이션으로 대체가능 <update id="boardCount" parameterType="Integer">
+    update myboard set count = count + 1 where idx = #{idx} 
+  </update> -->
+    
+</mapper>
