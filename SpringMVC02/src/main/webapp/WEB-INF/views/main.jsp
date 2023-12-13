@@ -56,43 +56,83 @@
   	    $.each(data, function(index, obj){
   	    	listHtml+="<tr>";
   	    	listHtml+="<td>"+obj.idx+"</td>";
-  	    	listHtml+="<td>"+obj.title+"</td>";
+  	    	/* 제목을 클릭하면 글 번호가 boardContent()로 넘어감 */
+  	    	listHtml+="<td><a href='javascript:boardContent(" + obj.idx + ")'>" + obj.title + "</a></td>";
   	        listHtml+="<td>"+obj.writer+"</td>";
   	        listHtml+="<td>"+obj.indate+"</td>";
   	        listHtml+="<td>"+obj.count+"</td>";
-  	        listHtml+="</tr>";  	        	 
+  	        listHtml+="</tr>";
+  	        
+  	        /* 이미 숨겨져있는 content!! */
+            listHtml+="<tr id='c" + obj.idx + "' style='display:none'>";
+    	    listHtml+="<td>내용</td>";
+    	    listHtml+="<td colspan='4'>";
+    	    listHtml+="<textarea rows='7' class='form-control'>"+obj.content+"</textarea>";
+    	    listHtml+="</td>";
+    	    listHtml+="</tr>";
+  	        
   	    	} );    	 
   	    
   	   listHtml+="<tr>";
  	   listHtml+="<td colspan='5'>";
- 	   listHtml+="<button class='btn btn-primary btn-sm' onclick='goForm()'>글쓰기</button>";
+ 	   listHtml+="<button class='btn btn-primary btn-sm' onclick='openForm()'>글쓰기</button>";
+ 	   listHtml+="<button class='btn btn-warning btn-sm' onclick='closeForm()'>닫기</button>";
  	   listHtml+="</td>";
  	   listHtml+="</tr>";
  	   listHtml+="</table>";
-  	    	 
-  	   $("#viewList").html(listHtml);
+
+ 	   $("#viewList").html(listHtml);
+
+ 	   closeForm();
 	}
 	
-  	function goForm(){
-	    $("#viewList").css("display","none");  // 감추고
-	    $("#writeForm").css("display","block");// 보이고
+	function boardContent(idx) {
+		/* 넘어온 글 번호에 해당하는 글의 상세내용을 보여줌 */
+ 	    /* $("#c" + idx).css("display","block"); : colspan 안먹힘*/
+ 	    $("#c" + idx).css("display","table-row");
+
+	}
+	
+  	function openForm(){
+ 	    $("#writeForm").css("display","block");
 	}
   	
-  	function goList(){
-	    $("#viewList").css("display","block");  // 보이고
-	    $("#writeForm").css("display","none");// 감추고
+  	function closeForm(){
+ 	    $("#writeForm").css("display","none");
 	}
-  	
-  	function goInsert() {
-  		$.ajax({
+  	  	
+	function boardInsert() {
+		/* form의 입력 데이터 하나씩 가져오기  
+		var title = $("#title").val();
+		var content = $("#content").val();
+		var writer = $("#writer").val(); */
+		
+		/* serialize() : form의 입력 데이터 모두 가져오기 : 직렬화(모든 데이터를 한 줄로 직렬화) */
+		/* title=111 & content=111 & writer=111 형태 */
+		var fData = $("#frm").serialize();
+/* 		alert(fData); */		
+  		$.ajax({ 
   			url : "boardInsert.do",
-  			data : ""
   			type : "post",
-  			success : makeView,
+  			data : fData,
+  			success : boardList,
   			error : function() {
   				alert("error");
   			}
   		});
+  		
+  		/* boardList(); ( X ) */
+  		
+  		/* form태그에 입력된 값 초기화 방법 2가지 */
+  		/* 방법 1
+		$("#title").val("");
+		$("#content").val("");
+		$("#writer").val(""); */
+		
+		/* 방법 2 : reset button 클릭 이벤트 */
+		$("#formClear").trigger("click");
+  		
+  		
   	}
   
   </script>
@@ -103,9 +143,13 @@
   <h2>SpringMVC02</h2>
   <div class="panel panel-default">
     <div class="panel-heading">BOARD</div>
-    <div class="panel-body" id="viewList" style="display: block"></div>
+    
+    <div class="panel-body" id="viewList" style="display: block"> </div>
+    
     <div class="panel-body" id="writeForm" style="display: none">
-	 <form>
+    
+<!-- <form action="boardInsert.do" method="post"> : 화면 전환되어버림 !-->
+	 <form id="frm">
       <table class="table">
          <tr>
            <td>제목</td>
@@ -121,15 +165,16 @@
          </tr>
          <tr>
            <td colspan="2" align="center">
-               <button type="button" class="btn btn-success btn-sm" onclick="goInsert()">등록</button>
-               <button type="reset" class="btn btn-warning btn-sm" id="fclear">취소</button>
+               <button type="button" class="btn btn-success btn-sm" onclick="boardInsert()">등록</button>
+               <button type="reset" class="btn btn-warning btn-sm" id="formClear">취소</button>
 <!--                <a href="/mvc02"> 리스트 </a>-->				
-				<button type="button" class="btn btn-info btn-sm" onclick="goList()">리스트</button>
+				<button type="button" class="btn btn-info btn-sm" onclick="closeForm()">리스트로</button>
  		   </td>
          </tr>
       </table>
      </form>	    
     </div>
+    
     <div class="panel-footer">ainokks071@gmail.com</div>
   </div>
 </div>
