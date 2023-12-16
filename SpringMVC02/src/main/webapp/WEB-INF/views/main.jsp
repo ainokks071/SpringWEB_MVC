@@ -5,7 +5,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!-- Spring mvc 02 : main.jsp 하나로 1)게시물전체목록 2)게시물등록 3)상세보기 4)수정하기화면 HOW??? --> 
-     
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +16,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   
   <script type="text/javascript">
-  	/* JQuery 시작 문법 : main.jsp 실행되면 아래 함수가 실행된다. */
+  	/* $(document).ready() : JQuery 시작 문법 : main.jsp 실행되면 아래 함수가 실행된다. */
   	$(document).ready(function() {
   		boardList();
   	});
@@ -37,61 +36,116 @@
   		});
   	}
   	
-	/* 콜백함수 */  	/* data=[{   },{    },{    },,, ] */
+	/* 콜백함수 */  	/* JSON data=[{   },{    },{    },,, ] */
   	function makeView(data) {
 /*   		alert(data); */
-  		var listHtml="<table class='table table-bordered'>";
-  	    listHtml+="<tr>";
-  	    listHtml+="<td>번호</td>";
-  	    listHtml+="<td>제목</td>";
-  	    listHtml+="<td>작성자</td>";
-  	    listHtml+="<td>작성일</td>";
-  	    listHtml+="<td>조회수</td>";
-  	    listHtml+="</tr>";
+ 
+  	    var listHtml="<table class='table table-bordered'>";
+	  	    listHtml+="<tr>";
+	  	    listHtml+="<td>번호</td>";
+	  	    listHtml+="<td>제목</td>";
+	  	    listHtml+="<td>작성자</td>";
+	  	    listHtml+="<td>작성일</td>";
+	  	    listHtml+="<td>조회수</td>";
+	  	    listHtml+="</tr>";
   	    
   	    /*JQuery 반복문  */
   	    /* index   0      1      2  */
-  	    /* data=[{   }, {   }, {   }, ...] */ 
+  	    /* JSON data=[{   }, {   }, {   }, ...] */ 
  		/* obj={"idx":5,"title":"게시판"~~ } */
-  	    $.each(data, function(index, obj){
+  	    $.each(data, function(index, board){
   	    	listHtml+="<tr>";
-  	    	listHtml+="<td>"+obj.idx+"</td>";
+  	    	listHtml+="<td>"+board.idx+"</td>";
+  	    	
   	    	/* 제목을 클릭하면 글 번호가 boardContent()로 넘어감 */
-  	    	listHtml+="<td><a href='javascript:boardContent(" + obj.idx + ")'>" + obj.title + "</a></td>";
-  	        listHtml+="<td>"+obj.writer+"</td>";
-  	        listHtml+="<td>"+obj.indate+"</td>";
-  	        listHtml+="<td>"+obj.count+"</td>";
+  	    	/* 비동기통신 X, 단순히 숨겨져있던 form을 보여주거나 가리기 */
+  	    	/* listHtml+="<td id='boardTitle"+board.idx+"'><a href='javascript:boardContent(" + board.idx + ")'>" + board.title + "</a></td>"; */
+  	    	listHtml+="<td id='boardTitle"+board.idx+"'><button onclick='boardCount(" + board.idx + ")'>" + board.title + "</button></td>";
+  	        listHtml+="<td>"+board.writer+"</td>";
+  	        listHtml+="<td>"+board.indate+"</td>";
+  	        listHtml+="<td id='boardCount"+board.idx+"'>"+board.count+"</td>";
   	        listHtml+="</tr>";
   	        
-  	        /* 이미 숨겨져있는 content!! */
-            listHtml+="<tr id='c" + obj.idx + "' style='display:none'>";
+  	        /* 이미 숨겨져있는 글 내용 content!! -> tr태그의 고유 id로 접근해서 diplay -> block*/
+            listHtml+="<tr id='content" + board.idx + "' style='display: none'>";
     	    listHtml+="<td>내용</td>";
     	    listHtml+="<td colspan='4'>";
-    	    listHtml+="<textarea rows='7' class='form-control'>"+obj.content+"</textarea>";
+    	    listHtml+="<textarea id='textArea"+board.idx+"' readonly rows='7' class='form-control'>" + board.content + "</textarea>";
+    	    listHtml+="<br/>";
+ 	 	    listHtml+="<span id='updateBtn"+board.idx+"'><button class='btn btn-primary btn-sm' onclick='boardUpdateForm("+board.idx+")'>수정화면</button></span>&nbsp;"; /* nbsp; : 공백 */
+	 	    listHtml+="<button class='btn btn-warning btn-sm' onclick='boardDelete("+board.idx+")'>삭제</button>&nbsp;";
+	 	    listHtml+="<button class='btn btn-info btn-sm' onclick='boardList()'>닫기</button>";
     	    listHtml+="</td>";
     	    listHtml+="</tr>";
-  	        
+/*     	    listHtml+="<tr style='display:block'>";
+    	    listHtml+="<td><button onclick='boardDelete(" + board.idx + ")'>삭제</button></td>";
+    	    listHtml+="</tr>"; */
   	    	} );    	 
   	    
-  	   listHtml+="<tr>";
- 	   listHtml+="<td colspan='5'>";
- 	   listHtml+="<button class='btn btn-primary btn-sm' onclick='openForm()'>글쓰기</button>";
- 	   listHtml+="<button class='btn btn-warning btn-sm' onclick='closeForm()'>닫기</button>";
- 	   listHtml+="</td>";
- 	   listHtml+="</tr>";
- 	   listHtml+="</table>";
-
- 	   $("#viewList").html(listHtml);
-
- 	   closeForm();
+	  	   listHtml+="<tr>";
+	 	   listHtml+="<td colspan='5'>";
+	 	   /* 비동기통신 X, 단순히 숨겨져있던 form을 보여주거나 가리기 */
+	 	   listHtml+="<button class='btn btn-primary btn-sm' onclick='openForm()'>글쓰기</button>";
+	 	   listHtml+="<button class='btn btn-warning btn-sm' onclick='closeForm()'>닫기</button>";
+	 	   listHtml+="</td>";
+	 	   listHtml+="</tr>";
+	 	   listHtml+="</table>";
+	
+	 	   $("#viewList").html(listHtml);
+     	   //boardList() 호출 시, 항상 글쓰기 form은 감추고 리스트 보여준다.
+	 	   closeForm();
 	}
 	
-	function boardContent(idx) {
-		/* 넘어온 글 번호에 해당하는 글의 상세내용을 보여줌 */
- 	    /* $("#c" + idx).css("display","block"); : colspan 안먹힘*/
- 	    $("#c" + idx).css("display","table-row");
-
+	/* 닫혀있는 글의 제목 클릭하면 -> DB에 조회수 1증가 -> DB에서 글 조회 -> text()로 조회수 갱신 -> 글 open */
+	function boardCount(idx) {
+	  if($("#content" + idx).css("display")=="none") {
+  		$.ajax({
+  			url : "boardCount.do",
+  			type : "get",
+  			data : {"idx":idx},
+  			success : function() {
+  				$.ajax({
+  		  			url : "boardContent.do",
+  		  			type : "get",
+  		  			data : {"idx":idx},
+  		  	  		dataType : "json",
+					success : function(vo) {
+							$("#boardCount"+vo.idx).text(vo.count);
+				 	    	$("#content" + vo.idx).css("display","table-row");
+					},	
+  		  			error : function() { alert("error"); }
+  				});
+			},
+  			error : function() { alert("error"); }
+  		});
+  	/* 글이 열려있다면, 글 닫아줌 */	
+	  } else {
+	    $("#content" + idx).css("display","none");
+		$("#textA" + vo.idx).attr("readonly", true);
+	  }
 	}
+	
+/* 	function boardContent(data) {
+  		$.ajax({ 
+  			url : "boardContent.do",
+  			type : "get",
+  			data : {"idx":idx},
+  			success : function(vo) {
+ */
+ 				/* 넘어온 idx에 해당하는 가려져있던 글의 상세내용을 보여줌, 비동기통신 X */
+				/* tr태그의 id로 접근해서 보여주기  */
+		 	    /* $("#c" + idx).css("display","block"); : colspan 안먹힘 : tr접근 시..*/
+/* 		 	      if($("#content" + idx).css("display")=="none") {
+			 	    $("#content" + idx).css("display","table-row");
+		 	    } else {
+			 	    $("#content" + idx).css("display","none");
+			 	    $("#textA" + idx).attr("readonly", true);
+		 	    }
+  				},
+  			error : function() { alert("error"); }
+  		});
+	}
+ */	
 	
   	function openForm(){
  	    $("#writeForm").css("display","block");
@@ -102,7 +156,7 @@
 	}
   	  	
 	function boardInsert() {
-		/* form의 입력 데이터 하나씩 가져오기  
+		/* 사용자가 입력한 form의 값을 하나씩 가져오기  val() <-> text() <-> html() 
 		var title = $("#title").val();
 		var content = $("#content").val();
 		var writer = $("#writer").val(); */
@@ -120,7 +174,6 @@
   				alert("error");
   			}
   		});
-  		
   		/* boardList(); ( X ) */
   		
   		/* form태그에 입력된 값 초기화 방법 2가지 */
@@ -128,12 +181,50 @@
 		$("#title").val("");
 		$("#content").val("");
 		$("#writer").val(""); */
-		
 		/* 방법 2 : reset button 클릭 이벤트 */
 		$("#formClear").trigger("click");
-  		
-  		
   	}
+	
+		function boardDelete(idx) {
+			/* alert(idx); */
+	  		$.ajax({
+	  			url : "boardDelete.do",
+	  			type : "get",
+	  			data : {"idx": idx},
+	  			success : boardList,
+	  			error : function() { alert("error"); }
+	  		});
+	  	}
+		
+		/* 수정화면버튼 클릭 : 1)textarea readonly false로 변경 2) 제목 input으로 변경 3)수정하기버튼 변경   */
+		function boardUpdateForm(idx) {
+			/* 1)textarea readonly false로 변경 */
+			/* attr = attribute 속성 */
+	 	    $("#textArea" + idx).attr("readonly", false);
+	 	    
+	 	   /* 2) 제목 input으로 변경 */
+	 	   var titleValue = $("#boardTitle" + idx).text();
+	 	   var newInput = "<input type='text' id='newTitle"+idx+"' class='form-control' value='"+titleValue+"' />";
+	 	   $("#boardTitle" + idx).html(newInput);
+			
+	 	    /* 3)수정하기버튼 변경 */
+	 	   var updateBtn = "<button class='btn btn-primary btn-sm' onclick='boardUpdate("+idx+")'> 수정하기 </button>";
+	 	   $("#updateBtn"+idx).html(updateBtn);
+	 	   }
+		
+		function boardUpdate(idx) {
+			/* var fData = $("#formUpdate"+idx).serialize(); */
+			var newTitle = $("#newTitle"+idx).val();
+			var newContent = $("#textArea"+idx).val();
+			
+			$.ajax({ 
+			url : "boardUpdate.do",
+			type : "post",
+			data : {"idx" : idx, "title" : newTitle, "content" : newContent},
+			success : boardList,
+			error : function() { alert("error"); }
+		    });
+		}
   
   </script>
 </head>
@@ -144,11 +235,12 @@
   <div class="panel panel-default">
     <div class="panel-heading">BOARD</div>
     
-    <div class="panel-body" id="viewList" style="display: block"> </div>
+    <!-- 위에 javascript 함수로 이 div에 내용물 넣어줌. -->
+    <div class="panel-body" id="viewList" style="display: block"> viewList </div>
     
+    <!-- 존재는 하지만, 글쓰기 form은 처음에는 보이지 않음  -->
     <div class="panel-body" id="writeForm" style="display: none">
-    
-<!-- <form action="boardInsert.do" method="post"> : 화면 전환되어버림 !-->
+	<!-- <form action="boardInsert.do" method="post"> : 화면 전환되어버림 !-->
 	 <form id="frm">
       <table class="table">
          <tr>
