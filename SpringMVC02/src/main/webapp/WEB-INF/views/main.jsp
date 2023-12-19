@@ -212,6 +212,7 @@
   	}
 	
 		/* 여러 개의 데이터를 넘길때 주의  */
+		
 		/* 1. JSON 형태로 변경해서 보낸다. contentType, JSON.stringify() 이용
 		   2. RestController에서는, 받을 때 @RequestBody 이용 !
 		*/
