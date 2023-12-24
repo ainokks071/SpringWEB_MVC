@@ -2,6 +2,7 @@
 <aop-reference-model>
 <aop-project name="SpringMVC01"/>
 <aop-project name="SpringMVC02"/>
+<aop-project name="SpringMVC03"/>
 <aop-project name="SpringMVC_basic01"/>
 <aop-project name="SpringMVC_basic02"/>
 <aop-project name="SpringMVC_basic03"/>
