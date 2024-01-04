@@ -17,4 +17,13 @@ public interface MemberMapper {
 //	로그인 체크
 	public Member memberLogin(Member vo);
 
+//	회원 정보 수정 
+	public void memberUpdate(Member vo);
+
+//	사진 등록 
+	public void imageUpdate(Member vo);
+
+//	회원 한명 조회 
+	public Member getMember(int memIdx);
+
 }

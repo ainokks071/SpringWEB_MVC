@@ -31,50 +31,11 @@
 	});  
   
   
-     /* id 중복확인 : ajax 비동기 */
-	function idDuplicatedCk() {
-    	var memID = $("#memID").val();
-    	
-    	if(memID == '') {
-    		/* 아무것도 입력하지 않고, 중복체크할 시. */
-    		alert("아이디를 입력하세요");
-    		return;
-    	}
-    	
-		$.ajax({
-			url : "${contextPath}/member/dbCheck",
-			type : "get",
-			data : {"memID":memID},
-  			success : function(id) {
-  				/* 중복이 아닐 경우 -> '' 빈문자열 반환
-  				   중복일 경우 -> 'ID' 해당 ID 반환 */
-				if(id == '') {
-				/* alert("중복이 아닙니다.");*/
-				
-				/* 아래 모달창 */
- 				/* $("#idDbMsg").text("중복이 아닙니다. 사용 가능한 아이디입니다."); */
- 				$("#modalTitle").text("ID 중복 확인");
- 				$("#modalContent").html("<span style='color: green;'> 사용 가능한 아이디입니다.</span>");
- 				$("#myModal").modal("show");
- 				
-				} else {
-				/* $("#idDbMsg").text("중복된 아이디입니다.");*/
-				$("#modalTitle").text("ID 중복 확인");
- 				$("#modalContent").html("<span style='color: red;'> 중복된 아이디입니다.</span>");
- 				$("#myModal").modal("show");
-  				}
-  			},	
-			error : function() { alert("error"); }
-		});
-	}
-  
   /* onkeyup에 의해 input창에 키보드를 눌렀다 뗄 때마다 실행되는 함수 */
 	function passwordCheck() {
 		var pwd1 = $("#memPassword1").val();
 		var pwd2 = $("#memPassword2").val();
-		
 		/* pwd2 비밀번호확인 input이 비어있으면(= pwd1만 입력하고 있을때는) 실행X */
-		
 		/* pwd2 비밀번호확인 input이 입력되어 있거나, 입력하고 있을 때 실행 */
 		if(pwd2 != '') {
 			if(pwd1 != pwd2) {
@@ -93,32 +54,39 @@
 		} 
 	}
   
-  function registerCheck() {
-	  
+  function updateCheck() {
 	  /* 나이는 int인데, 아무것도 입력하지 않고 서버로 넘어가면 -> null이 된다. 따라서 에러 발생 !!
 	     프론트단에서 해결해주는 게 좋겠다. */
-	     
-	  /* 숙제) 나이뿐만 아니라, 모든 정보 체크해볼 것! */
-	  
-	  /* 나이 체크 */
-	  var memAge = $("#memAge").val();
-	  
-	  if(memAge == '' || memAge == 0) {
+	
+		  /* 누락 체크 */
+		  var memID = $("#memID").val();
+		  var memPassword1 = $("#memPassword1").val();
+		  var memPassword2 = $("#memPassword2").val();
+		  var memName = $("#memName").val();
+		  var memAge = $("#memAge").val();
+		  var memEmail = $("#memEmail").val();
 		  
-		$("#modalTitle").text("회원가입 실패"); //"회원가입 실패"
-		$("#modalContent").html("<span style='color: red;'> 나이를 입력해주세요. </span>"); //"모든 정보를 입력해주세요."
-		$("#myModal").modal("show");
-		  /* 아래의 전송함수 실행 안되게 하기 위해 return false 사용. */
-		  return false;
-	  }
-	  
-	  /* 자바스크립트로 폼 전송하기 frm은 form의 name으로 내가 설정해준 것.*/
+		  /* 하나라도 누락 있을 시.. 누락 체크 */
+		  if(memID == '' || memPassword1 == '' || memPassword2 == '' || memName == '' || memAge == '' || memAge == 0 || memEmail == '') {
+			  
+			$("#modalTitle").text("회원정보 수정 실패"); 
+			$("#modalContent").html("<span style='color: red;'> 모든 정보를 입력해주세요. </span>"); //"모든 정보를 입력해주세요."
+			$("#myModal").modal("show");
+			  /* 아래의 전송함수 실행 안되게 하기 위해 return false 사용. */
+			  return false;
+		  }
+		  
+		  /* 누락은 없지만, 비밀번호 다를 시.. */
+		  if(memPassword1 != memPassword2) {
+				$("#modalTitle").text("회원정보 수정 실패"); 
+				$("#modalContent").html("<span style='color: red;'> 비밀번호가 일치하지 않습니다. 다시 입력해주세요. </span>"); //"모든 정보를 입력해주세요."
+				$("#myModal").modal("show");
+				  /* 아래의 전송함수 실행 안되게 하기 위해 return false 사용. */
+			  return false;
+		}
+		  
 	  document.frm.submit();
-	  
   }
-  
-    
-  
   
   </script>
 </head>
@@ -130,50 +98,49 @@
 <div class="container">
   <h2>SpringMVC03</h2>
   <div class="panel panel-default">
-    <div class="panel-heading">회원가입화면</div>
-    
+    <div class="panel-heading">회원수정화면</div>
     <div class="panel-body" id="writeForm" >
-	  <form name="frm" action="${contextPath}/memberInsert.do" method="post">
+	  <form name="frm" action="${contextPath}/memberUpdate.do" method="post">
 	  
-	 	  <input type="hidden" id="memPassword" name="memPassword" />
-		  <input type="hidden" id="memProfile" name="memProfile" value="zz"/>
+	 	  <input type="hidden" id="memID" name="memID" value="${sessionScope.member.memID}" />
+	 	  <input type="hidden" name="memIdx" value="${sessionScope.member.memIdx}" />
+	  	  <input type="hidden" id="memPassword" name="memPassword" value=""/>
 	  
           <table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd;">
            <tr>
              <td style="width: 110px; vertical-align: middle;">아이디</td>
-             <td><input type="text" id="memID" name="memID" class="form-control" maxlength="20" placeholder="아이디를 입력하세요."/></td>
-             <td style="width: 110px;"><button type="button" class="btn btn-primary btn-sm" onclick="idDuplicatedCk()">중복확인</button></td>
+             <td>${sessionScope.member.memID}</td>
            </tr>
            
            <tr>
              <td style="width: 110px; vertical-align: middle;">비밀번호</td>
              															<!--input창에 키보드 입력할 때마다 함수 호출  -->
-             <td colspan="2"><input type="password" id="memPassword1" name="memPassword1" onkeyup="passwordCheck()" class="form-control" maxlength="20" placeholder="비밀번호를 입력하세요."/></td>            
+             <td colspan="2"><input type="password" id="memPassword1" name="memPassword1" onkeyup="passwordCheck()" class="form-control" maxlength="20" value="${sessionScope.member.memPassword}"/></td>            
            </tr>
            <tr>
              <td style="width: 110px; vertical-align: middle;">비밀번호확인</td>
              										<!-- onkeyup : 키보드를 눌렀다 떼었을 때, check()로 위에 입력한 비밀번호와 입력하는지 확인  -->
-             <td colspan="2"><input type="password" id="memPassword2" name="memPassword2" onkeyup="passwordCheck()" class="form-control" maxlength="20" placeholder="비밀번호를 확인하세요."/></td>            
+             <td colspan="2"><input type="password" id="memPassword2" name="memPassword2" onkeyup="passwordCheck()" class="form-control" maxlength="20" value="${sessionScope.member.memPassword}"/></td>            
            </tr>
            
             <tr>
              <td style="width: 110px; vertical-align: middle;">사용자 이름</td>
-             <td colspan="2"><input type="text" id="memName" name="memName" class="form-control" maxlength="20" placeholder="이름을 입력하세요."/></td>            
+             <td colspan="2"><input type="text" id="memName" name="memName" class="form-control" maxlength="20" value="${sessionScope.member.memName}"/></td>            
            </tr>
            <tr>
              <td style="width: 110px; vertical-align: middle;">나이</td>
-             <td colspan="2"><input type="number" id="memAge" name="memAge" class="form-control" maxlength="20" placeholder="나이를 입력하세요."/></td>            
+             <td colspan="2"><input type="number" id="memAge" name="memAge" class="form-control" maxlength="20" value="${sessionScope.member.memAge}"/></td>            
            </tr>
            <tr>
              <td style="width: 110px; vertical-align: middle;">성별</td>
              <td colspan="2">
                 <div class="form-group" style="text-align: center; margin: 0 auto;">
                     <div class="btn-group" data-toggle="buttons">
-                       <label class="btn btn-primary active">
-                         <input type="radio" name="memGender" autocomplete="off" value="남자" checked/>남자
+                       <label class="btn btn-primary <c:if test="${sessionScope.member.memGender eq '남자'}">active</c:if>">
+                         <input type="radio" name="memGender" autocomplete="off" value="남자" <c:if test="${sessionScope.member.memGender eq '남자'}"> checked </c:if>/>남자
                        </label>
-                        <label class="btn btn-primary">
-                         <input type="radio" name="memGender" autocomplete="off" value="여자"/>여자
+                        <label class="btn btn-primary <c:if test="${sessionScope.member.memGender eq '여자'}">active</c:if>">
+                         <input type="radio" name="memGender" autocomplete="off" value="여자" <c:if test="${sessionScope.member.memGender eq '여자'}"> checked </c:if>/>여자
                        </label>
                     </div>                    
                 </div>
@@ -182,12 +149,12 @@
            
            <tr>
              <td style="width: 110px; vertical-align: middle;">이메일</td>
-             <td colspan="2"><input type="text" id="memEmail" name="memEmail" class="form-control" maxlength="20" placeholder="이메일을 입력하세요."/></td>            
+             <td colspan="2"><input type="text" id="memEmail" name="memEmail" class="form-control" maxlength="20" value="${sessionScope.member.memEmail}"/></td>            
            </tr>
            
            <tr>
              <td colspan="3" style="text-align: left;">
-                <span id="passMessage" style="color: red"> </span>   <input type="button" class="btn btn-primary btn-sm pull-right" onclick="registerCheck()" value="등록" />
+                <span id="passMessage" style="color: red"> </span>   <input type="button" class="btn btn-primary btn-sm pull-right" onclick="updateCheck()" value="수정" />
              </td>             
            </tr>
            

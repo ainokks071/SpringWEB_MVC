@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"  />
     
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +18,7 @@
    /*  회원가입 성공 후, 리다이렉트시 한번 뿌려줄 데이터 객체바인딩
 		rattr.addFlashAttribute("msg1", "회원가입 성공");
 		rattr.addFlashAttribute("msg2", vo.getMemName()+"님, 환영합니다."); */
+		
    /*  로그인 성공 후, 리다이렉트시 한번 뿌려줄 데이터 객체바인딩
 		rattr.addFlashAttribute("msg1", "로그인 성공");
 		rattr.addFlashAttribute("msg2", vo.getMemName()+"님, 환영합니다."); */
@@ -38,16 +41,74 @@
 <body>
 
 <!-- 상단 nav바 -->
-<jsp:include page="common/header.jsp"/>
+<jsp:include page="common/header.jsp"/>     
 
-<div class="container">
+ <div class="container">
   <h3>Spring MVC 03</h3>
-  	<!-- 로그인을 한 경우 : session.setAttribute("member", member);  세션 객체바인딩 꺼내오기-->   
-  <p> <c:if test="${!empty member}"> ${member.memName}님 환영합니다.</c:if></p>
-  <p> <c:if test="${empty member}"> 로그인 해주세요 !</c:if></p>
+  <!-- 로그인을 한 경우 : session.setAttribute("member", member);  세션 객체바인딩 꺼내오기-->   
+  <c:if test="${!empty sessionScope.member}">
+  	 <!-- 사진 업로드 했을 때, 회원이미지 -->
+	  <c:if test="${!empty sessionScope.member.memProfile}">
+    	  <div><a href="${contextPath}/memberImageForm.do"><img src="${contextPath}/resources/upload/${sessionScope.member.memProfile}" style="width: 70px; height: 70px;"/></a></div> 
+ 	 </c:if>
+ 	 <!-- 사진 업로드 안했을 때, 기본이미지 -->
+	  <c:if test="${empty sessionScope.member.memProfile}">
+    	  <div><a href="${contextPath}/memberImageForm.do"><img src="${contextPath}/resources/images/basicProfile.jpeg" style="width: 70px; height: 70px;"/></a></div> 
+ 	 </c:if>
+  </c:if>
+  
+  <h4> <c:if test="${!empty sessionScope.member}"> ${member.memName}님 환영합니다.</c:if></h4>
+  <h4> <c:if test="${empty sessionScope.member}"> 로그인 해주세요 !</c:if></h4>
   
   <p>게시판 + 회원관리 : 권한 -> 회원가입, 로그인 기능 구현</p>
 </div>
+ 
+<div class="container">
+  <div class="panel panel-default">
+  
+    <div>
+       <img src="${contextPath}/resources/images/background.jpeg" style="width: 100%; height: 380px;"/>
+    </div>
+    
+    <div class="panel-body"> <!-- 탭 메뉴 -->
+    
+		<ul class="nav nav-tabs">
+		  <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+		  <li><a data-toggle="tab" href="#menu1">게시판</a></li>
+		  <li><a data-toggle="tab" href="#menu2">공지사항</a></li>
+		</ul>		
+		
+		<div class="tab-content">
+		  <div id="home" class="tab-pane fade in active">
+		    <h3>HOME</h3>
+		    <p>Some content.</p>
+		  </div>
+		  
+		  <div id="menu1" class="tab-pane fade">
+		    <h3>게시판</h3>
+		    <p>Some content in menu 1.</p>
+		  </div>
+		  
+		  <div id="menu2" class="tab-pane fade">
+		    <h3>공지사항</h3>
+		    <p>Some content in menu 2.</p>
+		  </div>
+		</div>
+				
+    </div>
+    
+    <div class="panel-footer"> ainokks071@gmail.com </div>
+    
+  </div>
+  
+</div>
+
+
+
+
+
+
+
 
 <!-- 모달창 -->
 <jsp:include page="common/modal.jsp"/>

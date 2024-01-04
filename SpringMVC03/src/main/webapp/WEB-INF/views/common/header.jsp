@@ -30,21 +30,21 @@
     </ul>
     
     <!-- 로그인을 하지 않은 경우 : session -->
-    <c:if test="${empty member}">
+    <c:if test="${empty sessionScope.member}">
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="${contextPath}/memberRegister.do"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
+      <li><a href="${contextPath}/memberInsertForm.do"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
       <li><a href="${contextPath}/memberLoginForm.do"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
     </ul>
 	</c:if>
 	
-	<!-- 로그인을 한 경우 : session.setAttribute("member", vo); -->   
-    <c:if test="${!empty member}">
+	<!-- 로그인을 한 경우 : session.setAttribute("member", member); -->   
+    <c:if test="${!empty sessionScope.member}">
      <ul class="nav navbar-nav navbar-right">
      																<!-- 세션 객체바인딩 꺼내오기 -->
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> ${member.memName}님 환영합니다. </a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> 회원정보 수정</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> 프로필사진 등록</a></li>
-      <li><a href="${contextPath}/memberLogout.do"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      <li><a> ${sessionScope.member.memName}님 환영합니다. </a></li>
+      <li><a href="${contextPath}/memberUpdateForm.do"><span class="glyphicon glyphicon-wrench"></span> 회원정보 수정</a></li>
+      <li><a href="${contextPath}/memberImageForm.do"><span class="glyphicon glyphicon-picture"></span> 프로필사진 등록</a></li>
+      <li><a href="${contextPath}/memberLogout.do"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
      </ul>
     </c:if>
   </div>

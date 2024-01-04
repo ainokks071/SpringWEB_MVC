@@ -15,21 +15,19 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
-     <script type="text/javascript">
-   /*  로그인 실패 후, 리다이렉트시 한번 뿌려줄 데이터 객체바인딩
-		rattr.addFlashAttribute("msg1", "로그인 실패");
-		rattr.addFlashAttribute("msg2", "아이디와 비밀번호를 확인해주세요."); */
-	$(document).ready(function() {
-	  /* msg1이 비어있지 않다는 것은, 회원가입 성공한 것. */
-		if(${!empty msg1}) {
-			$("#modalTitle").text("${msg1}");
-			$("#modalContent").html("<span style='color: red;'> ${msg2} </span>");
-			$("#myModal").modal("show");
-		}
-	});  
-		
-   </script>
+  	<script type="text/javascript">
+	   /*  로그인 실패 후, 리다이렉트시 "한번" 뿌려줄 데이터 객체바인딩
+			rattr.addFlashAttribute("msg1", "로그인 실패");
+			rattr.addFlashAttribute("msg2", "아이디와 비밀번호를 확인해주세요."); */
+		$(document).ready(function() {
+		  /* msg1이 비어있지 않다는 것은, 로그인에 실패한 것. */
+			if(${!empty msg1}) {
+				$("#modalTitle").text("${msg1}");
+				$("#modalContent").html("<span style='color: red;'> ${msg2} </span>");
+				$("#myModal").modal("show");
+			}
+		});  
+	</script>
   
   
 </head>
@@ -54,6 +52,7 @@
            </tr>      
            <tr>
              <td colspan="2" style="text-align: left;">
+             <!-- ajax로도 해볼 것 ! -->
                 <input type="submit" class="btn btn-primary btn-sm pull-right" value="로그인"/>
              </td>             
            </tr>

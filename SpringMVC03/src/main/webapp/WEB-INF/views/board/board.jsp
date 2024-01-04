@@ -16,7 +16,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   
   <script type="text/javascript">
-  	/* $(document).ready() : JQuery 시작 문법 : main.jsp 실행되면 아래 함수가 실행된다. */
+  	/* $(document).ready() : JQuery 시작 문법 :board.jsp 실행되면 아래 함수가 실행된다. */
   	$(document).ready(function() {
   		boardList();
   	});

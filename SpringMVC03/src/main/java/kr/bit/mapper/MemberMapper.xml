@@ -16,5 +16,19 @@
   <select id="memberLogin" parameterType="kr.bit.entity.Member" resultType="kr.bit.entity.Member">
     select * from mymember where memID = #{memID} and memPassword = #{memPassword}
   </select>
+  
+  <update id="memberUpdate" parameterType="kr.bit.entity.Member">
+  	update mymember set memPassword = #{memPassword}, memName = #{memName}, memAge = #{memAge},
+  	 memGender = #{memGender}, memEmail = #{memEmail} where memIdx = #{memIdx}
+  </update>
+  
+  <update id="imageUpdate" parameterType="kr.bit.entity.Member" >
+  	update mymember set memProfile = #{memProfile} where memIdx = #{memIdx}
+  </update>
+
+  <select id="getMember" parameterType="kr.bit.entity.Member" resultType="kr.bit.entity.Member">
+    select * from mymember where memIdx = #{memIdx}
+  </select>
+
 
 </mapper>
