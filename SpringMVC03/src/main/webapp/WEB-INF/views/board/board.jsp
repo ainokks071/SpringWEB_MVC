@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -36,7 +36,7 @@
   		});
   	}
   	
-	/* 콜백함수 */  	/* JSON data=[{   },{    },{    },,, ] */
+	/* 콜백함수 */  	/* list가 변환된 JSON data=[{   },{    },{    },,, ] */
   	function makeView(data) {
 /*   		alert(data); */
  
@@ -49,7 +49,7 @@
 	  	    listHtml+="<td>조회수</td>";
 	  	    listHtml+="</tr>";
   	    
-  	    /*JQuery 반복문  */
+  	    /*JQuery 반복문 : boardList에서 board 하나씩 추출 */
   	    /* index   0      1      2  */
   	    /* JSON data=[{   }, {   }, {   }, ...] */ 
  		/* obj={"idx":5,"title":"게시판"~~ } */
@@ -81,24 +81,37 @@
     	    listHtml+="<td colspan='4'>";
     	    /* listHtml+="<textarea id='textArea"+board.idx+"' readonly rows='7' class='form-control'>" + board.content + "</textarea>"; */
     	    listHtml+="<textarea id='textArea"+board.idx+"' readonly rows='7' class='form-control'></textarea>";
-    	    listHtml+="<br/>";
- 	 	    listHtml+="<span id='updateBtn"+board.idx+"'><button class='btn btn-primary btn-sm' onclick='boardUpdateForm("+board.idx+")'>수정화면</button></span>&nbsp;"; /* nbsp; : 공백 */
-	 	    listHtml+="<button class='btn btn-warning btn-sm' onclick='boardDelete("+board.idx+")'>삭제</button>&nbsp;";
-	 	    listHtml+="<button class='btn btn-info btn-sm' onclick='boardList()'>리스트로</button>";
+	    	listHtml+="<br/>";
+	    	
+	    	/* 본인이 작성한 글이면 수정, 삭제버튼 클릭 가능 */
+	  	    if("${sessionScope.member.memID}" == board.memID) {
+		 	 	listHtml+="<span id='updateBtn"+board.idx+"'><button class='btn btn-primary btn-sm' onclick='boardUpdateForm("+board.idx+")'>수정화면</button></span>&nbsp;"; /* nbsp; : 공백 */
+			 	listHtml+="<button class='btn btn-warning btn-sm' onclick='boardDelete("+board.idx+")'>삭제</button>&nbsp;";
+		 	    listHtml+="<button class='btn btn-info btn-sm' onclick='boardList()'>리스트로</button>";
+	  	    } else {
+		 	 	listHtml+="<span id='updateBtn"+board.idx+"'><button disabled class='btn btn-primary btn-sm' onclick='boardUpdateForm("+board.idx+")'>수정화면</button></span>&nbsp;"; /* nbsp; : 공백 */
+			 	listHtml+="<button disabled class='btn btn-warning btn-sm' onclick='boardDelete("+board.idx+")'>삭제</button>&nbsp;";
+		 	    listHtml+="<button class='btn btn-info btn-sm' onclick='boardList()'>리스트로</button>";
+	  	    }
     	    listHtml+="</td>";
     	    listHtml+="</tr>";
 /*     	    listHtml+="<tr style='display:block'>";
     	    listHtml+="<td><button onclick='boardDelete(" + board.idx + ")'>삭제</button></td>";
     	    listHtml+="</tr>"; */
   	    	});
-  	    
-	  	   listHtml+="<tr>";
-	 	   listHtml+="<td colspan='5'>";
-	 	   /* 비동기통신 X, 단순히 숨겨져있던 form을 보여주거나 가리기 */
-	 	   listHtml+="<button class='btn btn-primary btn-sm' onclick='openForm()'>글쓰기</button>";
-	 	   listHtml+="<button class='btn btn-warning btn-sm' onclick='closeForm()'>닫기</button>";
-	 	   listHtml+="</td>";
-	 	   listHtml+="</tr>";
+  	       
+  	       /* 로그인 한 회원만 글쓰기 보여주기. */		
+  	       if(${!empty sessionScope.member}) {
+		  	   listHtml+="<tr>";
+		 	   listHtml+="<td colspan='5'>";
+		 	   /* 글쓰기 버튼 비동기통신 X, 단순히 숨겨져있던 form을 보여주거나 가리기 */
+		 	   /* 글쓰기 버튼은 로그인을 했을 때만 보여준다. */
+		 	   listHtml+="<button class='btn btn-primary btn-sm' onclick='openForm()'>글쓰기</button>";
+		 	   listHtml+="<button class='btn btn-warning btn-sm' onclick='closeForm()'>닫기</button>";
+		 	   listHtml+="</td>";
+		 	   listHtml+="</tr>";
+  	       }
+  	       
 	 	   listHtml+="</table>";
 	
 	 	   $("#viewList").html(listHtml);
@@ -189,6 +202,7 @@
 		
 		/* serialize() : form의 입력 데이터 모두 가져오기 : 직렬화(모든 데이터를 한 줄로 직렬화) */
 		/* title=111 & content=111 & writer=111 형태 */
+		/* + 회원ID까지 -> title=111 & content=111 & writer=111 & memID=kimks071 */
 		var fData = $("#frm").serialize();
 /* 		alert(fData); */		
   		$.ajax({
@@ -263,7 +277,7 @@
 <jsp:include page="../common/header.jsp"/>
  
 <div class="container">
-  <h2>SpringMVC03</h2>
+  <h2>회원 게시판</h2>
   <div class="panel panel-default">
     <div class="panel-heading">BOARD</div>
     
@@ -275,19 +289,23 @@
 	<!-- <form action="boardInsert.do" method="post"> : 화면 전환되어버림 !-->
 	<!-- form태그를 반복문 안에 작성할 수 없는 이유 : name의 값이 계속 변한다. -->
 	 <form id="frm">
+      <input type="hidden" id="memID" name="memID" value="${sessionScope.member.memID}" />
       <table class="table">
          <tr>
            <td>제목</td>
            <td><input type="text" id="title" name="title" class="form-control"/></td>
          </tr>
+         
          <tr>
            <td>내용</td>
            <td><textarea rows="7" class="form-control" id="content" name="content"></textarea> </td>
          </tr>
+         
          <tr>
            <td>작성자</td>
-           <td><input type="text" id="writer" name="writer" class="form-control"/></td>
+           <td><input type="text" id="writer" name="writer" class="form-control" value="${sessionScope.member.memName}" readonly/></td>
          </tr>
+         
          <tr>
            <td colspan="2" align="center">
                <button type="button" class="btn btn-success btn-sm" onclick="boardInsert()">등록</button>

@@ -1,16 +1,14 @@
 INDEX VERSION 1.4+/Users/kks/dev-study/SpringWEB_MVC/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-4070866094.index
 2522170076.index
-2242071608.index
-3076002919.index
-2853203162.index
-257692518.index
-1806511380.index
 1098279252.index
-1440476698.index
-2539016709.index
-2539016709.index
-991851354.index
-3780276810.index
-2913654842.index
 4292965003.index
+257692518.index
+3076002919.index
+2913654842.index
+2242071608.index
+2539016709.index
+2853203162.index
+3780276810.index
+4070866094.index
+1806511380.index
+1440476698.index

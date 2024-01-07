@@ -240,12 +240,12 @@ public class MemberController{
 	}
 	
 //	실제 파일 업로드 + DB에 memProfile이름 저장. 
-	@RequestMapping("/memberImageInsert.do")   // 메서드의 매개변수로 주입받는 객체는 생성될 때, 기본생성자가 호출되는 것 같다.
-	public String memberImageInsert(Member vo, HttpSession session, DefaultFileRenamePolicy renamePolicy,
+	@RequestMapping("/memberImageInsert.do")   // 메서드의 매개변수로 주입받는 객체가 생성될 때, 기본생성자가 호출되는 것 같다.
+	public String memberImageInsert(Member vo, HttpSession session,
 									HttpServletRequest request, RedirectAttributes rattr) {
 //		파일업로드 api : cos.jar(고전방식) -> pox.xml에 추가. -> 제공API인 MultipartRequest 객체 사용할 것.
-
-//		동일한 파일명으로 업로드 시, 이름 변경하여 동일한 파일 업로드 해준다.
+		
+//		동일한 파일명으로 업로드 시, 이름 변경하여 파일 업로드 해주는 객체
 //		DefaultFileRenamePolicy renamePolicy = new DefaultFileRenamePolicy();
 		
 		MultipartRequest multi = null;
@@ -257,10 +257,36 @@ public class MemberController{
 		int fileMaxSize = 10 * 1024 * 1024; //10mb
 		String encoding = "UTF-8";
 		
-//		request객체에 post방식으로 넘어온 데이터 들어있다.
+		String memProfile = null;
+		String oldProfile = null;
+		int memIdx = 0;
+		
+//		request객체에 post방식으로 넘어온 데이터 들어있다.(member의 idx, profile)
 		try {
-//			파일 업로드 완료
-			multi = new MultipartRequest(request, uploadPath, fileMaxSize, encoding, renamePolicy);
+//			파일 업로드 완료 !
+			multi = new MultipartRequest(request, uploadPath, fileMaxSize, encoding, new DefaultFileRenamePolicy());
+			
+			memProfile = multi.getFilesystemName("memProfile");
+//			System.out.println(memProfile); 파일 선택하지 않으면 ? -> null 찍힌다.
+			if(memProfile == null) {
+				memIdx = Integer.parseInt(multi.getParameter("memIdx"));
+//				기존 사진은 지우기. 
+				oldProfile = mapper.getMember(memIdx).getMemProfile();
+				new File(uploadPath + "/" + oldProfile).delete();
+				
+				vo.setMemIdx(memIdx);
+				vo.setMemProfile(memProfile);
+				mapper.imageUpdate(vo);  // DB에 memProfile null로 변경 
+
+//				업데이트 된 회원 조회해서,
+				vo = mapper.getMember(memIdx);
+//				세션객체바인딩 새롭게 
+				session.setAttribute("member", vo); 
+				rattr.addFlashAttribute("msg1", "프로필 사진 변경 성공");
+				rattr.addFlashAttribute("msg2", "기본 이미지로 변경 되었습니다.");
+				
+				return "redirect:/"; 
+			}
 			
 		} catch (IOException e) {
 //			파일 크기 10mb 이상일 경우 ?
@@ -273,15 +299,12 @@ public class MemberController{
 			return "redirect:/memberImageForm.do"; 
 		}
 		
-		
-		
-		
-		
-		
 //		파일 이름 추출
-		String memProfile = multi.getFilesystemName("memProfile");
+		memProfile = multi.getFilesystemName("memProfile");
 //		파일의 확장자를 대문자로 추출
+		
 		String ext = memProfile.substring(memProfile.lastIndexOf(".")+1).toUpperCase();
+		
 		if(!(ext.equals("JPEG") || ext.equals("PNG") || ext.equals("JPG") || ext.equals("GIF"))) {
 			rattr.addFlashAttribute("msg5", "파일 업로드 오류");
 			rattr.addFlashAttribute("msg6", "이미지 파일만 업로드할 수 있습니다.");
@@ -291,21 +314,16 @@ public class MemberController{
 			return "redirect:/memberImageForm.do"; 
 		}
 		
-		int memIdx = Integer.parseInt(multi.getParameter("memIdx")); 
+		memIdx = Integer.parseInt(multi.getParameter("memIdx")); 
 		vo.setMemIdx(memIdx);
 		vo.setMemProfile(memProfile);
 		
 //		기존 사진은 지우기. 
-		String oldProfile = mapper.getMember(memIdx).getMemProfile();
+		oldProfile = mapper.getMember(memIdx).getMemProfile();
 		new File(uploadPath + "/" + oldProfile).delete();
-		
-		
-		
 		
 //		DB 사진 업데이트 
 		mapper.imageUpdate(vo); 
-		
-		
 		
 //		회원 사진 업데이트 후에, session객체바인딩 새롭게 해줘야 리다이렉트 시, jsp파일에서 인식한다.
 		vo = mapper.getMember(memIdx);
@@ -316,8 +334,6 @@ public class MemberController{
 //		홈화면으로 
 		return "redirect:/"; 
 
-		
-//		System.out.println(vo);
 	}
 
 

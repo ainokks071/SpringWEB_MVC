@@ -11,8 +11,8 @@
   
   <!-- #으로 BoardVO에 저장된, 클라이언트가 입력한 데이터 추출. -->
   <insert id="boardInsert" parameterType="kr.bit.entity.Board">
-    insert into myboard(title, content, writer)
-    values(#{title}, #{content}, #{writer}) 
+    insert into myboard(memID, title, content, writer)
+    values(#{memID}, #{title}, #{content}, #{writer}) 
   </insert>
   
   <!-- parameterType int형 하나일 때 생략 가능 -->

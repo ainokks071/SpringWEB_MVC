@@ -46,7 +46,7 @@ public class BoardRestController {
 		return boardList;
 	}
 	
-//	parameter 수집 		/* title=111 & content=111 & writer=111 형태 */
+//	parameter 수집 		/* title=111 & content=111 & writer=111 & memID = kimks071 형태 */
 //	insert는 왜 @RequestBody 없지 ? -> 에러..
 	@PostMapping("/new")
 	public void boardInsert(Board vo) {
