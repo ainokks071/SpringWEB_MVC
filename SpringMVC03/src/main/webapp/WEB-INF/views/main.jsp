@@ -45,18 +45,6 @@
 
  <div class="container">
   <h3>Spring MVC 03</h3>
-  <!-- 로그인을 한 경우 : session.setAttribute("member", member);  세션 객체바인딩 꺼내오기-->   
-  <c:if test="${!empty sessionScope.member}">
-  	 <!-- 사진 업로드 했을 때, 회원이미지 -->
-	  <c:if test="${!empty sessionScope.member.memProfile}">
-    	  <div><a href="${contextPath}/memberImageForm.do"><img src="${contextPath}/resources/upload/${sessionScope.member.memProfile}" style="width: 70px; height: 70px;"/></a></div> 
- 	 </c:if>
- 	 <!-- 사진 업로드 안했을 때, 기본이미지 -->
-	  <c:if test="${empty sessionScope.member.memProfile}">
-    	  <div><a href="${contextPath}/memberImageForm.do"><img src="${contextPath}/resources/images/basicProfile.jpeg" style="width: 70px; height: 70px;"/></a></div> 
- 	 </c:if>
-  </c:if>
-  
   <h4> <c:if test="${!empty sessionScope.member}"> ${member.memName}님 환영합니다.</c:if></h4>
   <h4> <c:if test="${empty sessionScope.member}"> 로그인 해주세요 !</c:if></h4>
   

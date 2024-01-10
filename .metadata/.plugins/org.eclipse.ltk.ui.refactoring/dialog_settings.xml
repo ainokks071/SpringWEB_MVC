@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="RefactoringWizard.preview">
-		<item key="width" value="540"/>
-		<item key="height" value="340"/>
+		<item key="width" value="525"/>
+		<item key="height" value="320"/>
 	</section>
 	<section name="InferTypeArguments">
 		<item key="assumeCloneReturnsSameType" value="true"/>

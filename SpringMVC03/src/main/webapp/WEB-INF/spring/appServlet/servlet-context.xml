@@ -10,9 +10,11 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
+	<!-- 어노테이션 활성화 -->
 	<annotation-driven />
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- 이미지, css 등 경로 지정 -->
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<!--View Resolver(뷰 리졸버)  -->
@@ -22,6 +24,6 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<!-- scan : 객체 생성 어노테이션 인식 스프링컨테이너에 로딩 컨트롤러 패키지 내 모든 객체 -->
+	<!-- scan : 객체 생성 어노테이션 인식 스프링컨테이너에 로딩 컨트롤러 패키지 내 모든 객체 : POJO,-->
 	<context:component-scan base-package="kr.bit.controller" />
 </beans:beans>

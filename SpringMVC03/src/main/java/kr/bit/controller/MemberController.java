@@ -268,6 +268,7 @@ public class MemberController{
 			
 			memProfile = multi.getFilesystemName("memProfile");
 //			System.out.println(memProfile); 파일 선택하지 않으면 ? -> null 찍힌다.
+			
 			if(memProfile == null) {
 				memIdx = Integer.parseInt(multi.getParameter("memIdx"));
 //				기존 사진은 지우기. 

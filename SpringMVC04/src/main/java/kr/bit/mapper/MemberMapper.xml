@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- namespace : MapperInterface와 Mapper.xml 연결 !-->
+<mapper namespace="kr.bit.mapper.MemberMapper">
+  
+  <!-- #으로 BoardVO에 저장된, 클라이언트가 입력한 데이터 추출. -->
+  <insert id="memberInsert" parameterType="kr.bit.entity.Member">
+    insert into mymember(memID, memPassword, memName, memAge, memGender, memEmail, memProfile)
+    values(#{memID}, #{memPassword}, #{memName}, #{memAge}, #{memGender}, #{memEmail}, #{memProfile}) 
+  </insert>
+  
+  <select id="memberDbcheck" parameterType="String" resultType="String">
+    select memID from mymember where memID = #{memID}
+  </select>
+  
+  <select id="memberLogin" parameterType="kr.bit.entity.Member" resultType="kr.bit.entity.Member">
+    select * from mymember where memID = #{memID} and memPassword = #{memPassword}
+  </select>
+  
+  <update id="memberUpdate" parameterType="kr.bit.entity.Member">
+  	update mymember set memPassword = #{memPassword}, memName = #{memName}, memAge = #{memAge},
+  	 memGender = #{memGender}, memEmail = #{memEmail} where memIdx = #{memIdx}
+  </update>
+  
+  <update id="imageUpdate" parameterType="kr.bit.entity.Member" >
+  	update mymember set memProfile = #{memProfile} where memIdx = #{memIdx}
+  </update>
+
+  <select id="getMember" parameterType="kr.bit.entity.Member" resultType="kr.bit.entity.Member">
+    select * from mymember where memIdx = #{memIdx}
+  </select>
+
+
+</mapper>
