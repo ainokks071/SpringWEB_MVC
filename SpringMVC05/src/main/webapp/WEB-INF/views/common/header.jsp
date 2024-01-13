@@ -56,8 +56,20 @@
 		  
 	  </li>
 	       
-	  <!-- 회원 권한 보여주기(반복문 필요)  -->
-      <li><a> ${sessionScope.member.memName}님 환영합니다. (<c:forEach items="${sessionScope.member.authList}" var="authVO">${fn:substring(authVO.auth,5,6)} </c:forEach>)</a></li>
+	  <!-- 회원 권한 보여주기(반복문 필요)  role_user-->
+      <%-- <li><a> ${sessionScope.member.memName}님 환영합니다. (<c:forEach items="${sessionScope.member.authList}" var="authVO">${fn:substring(authVO.auth,5,6)} </c:forEach>)</a></li> --%>
+      <li>
+      	<a> ${sessionScope.member.memName}님 환영합니다. 
+      		(
+      		<c:forEach items="${sessionScope.member.authList}" var="authVO">
+      			<c:if test="${authVO.auth == 'ROLE_USER'}"> USER </c:if>
+      			<c:if test="${authVO.auth == 'ROLE_MANAGER'}"> MANAGER </c:if>
+      			<c:if test="${authVO.auth == 'ROLE_ADMIN'}"> ADMIN </c:if>
+      		</c:forEach>
+      		)
+      	</a>
+      </li>
+      
       <li><a href="${contextPath}/memberUpdateForm.do"><span class="glyphicon glyphicon-wrench"></span> 회원정보 수정</a></li>
       <li><a href="${contextPath}/memberImageForm.do"><span class="glyphicon glyphicon-picture"></span> 프로필사진 수정 </a></li>
       <li><a href="${contextPath}/memberLogout.do"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>

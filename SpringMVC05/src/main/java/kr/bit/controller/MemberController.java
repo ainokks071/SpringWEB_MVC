@@ -36,7 +36,7 @@ public class MemberController{
 
 	
 	//회원가입화면 
-	//http://localhost:8080/mvc03/membermemberInserForm.do 요청 
+	//http://localhost:8080/mvc05/membermemberInserForm.do 요청 
 	@RequestMapping("/memberInsertForm.do")
 	public String memberRegister() {
 		return "member/memberInsertForm"; //memberInsertForm.jsp 
@@ -47,7 +47,6 @@ public class MemberController{
 //	2. 누락은 없는데 회원아이디 중복인경우 -> 회원가입화면으로 리다이렉트
 //	3. 누락은 없는데 비밀번호 일치하지 않는 경우 -> 회원가입화면으로 리다이렉트
 //	4. 누락 없고, 아이디 중복 없고, 비밀번호 일치한 경우 -> 회원가입 성공 -> 홈화면으로 리다이렉트 + 세션 객체바인딩(로그인 유지) !
-	
 	@PostMapping("/memberInsert.do")
 	public String memberInsert(Member vo, String memPassword1, String memPassword2,
 								RedirectAttributes rattr, HttpSession session) {
@@ -59,9 +58,16 @@ public class MemberController{
 //		System.out.println(vo.getMemName()); -> 확인..
 //		서버에서 유효성 검사해보기. validation @Valid
 //		id, pwd, name, age, gender, email 하나라도 입력을 하지 않고 회원가입을 하면?
+
+//		참고)) Builder패턴 : 편한 초기화 대체 lombok API 제공 
+//		Member.builder().memID("kks").memPassword("1234").memName("kks").memAge(12).memEmail("1234").build();
 		
 		List<AuthVO> authList = vo.getAuthList();
-				
+//		System.out.println(vo);
+//		System.out.println(authList);
+//		[AuthVO(num=0, memID=null, auth=ROLE_USER), AuthVO(num=0, memID=null, auth=ROLE_MANAGER), AuthVO(num=0, memID=null, auth=ROLE_MANAGER)]
+//		사용자가 체크한 권한만 초기화 되겠지. -> num은 DB에서 auto_increment, memID는 setter로 초기화할 것 !
+		
 //		1. 누락 체크 
 		if(vo.getMemID() == null || vo.getMemID().equals("") ||
 //		   memPassword는 hidden으로, pwd1과 pwd2가 일치할 경우에만 값이 넘어온다. 일치하지 않으면 null또는 빈문자열!!				
@@ -90,7 +96,6 @@ public class MemberController{
 		
 //		숙제) 아이디 중복체크 -> vo보내서 DB 조회 -> 중복이라면? -> 리다이렉트.
 //		mapper.memberSelect(vo);
-		
 			
 //		**새로운개념 : RedirectAttributes에 객체바인딩 !	(리다이렉트할 때 객체바인딩.)
 //		다시, 회원가입 화면으로 redirect! -> 리다이렉트는 새로운 요청 (새로운 HttpServletRequest..) : 포워딩과의 차이점!!
@@ -102,18 +107,27 @@ public class MemberController{
 		
 //		나이를 입력하지 않으면 -> "?" -> 숫자로 못바꾸지!!
 		
-//		*** 비밀번호 암호화하기.(API) -> SecurityConfig에 @Bean 객체 설정 
-//		암호화된 비밀번호 반환.
+//		*** 비밀번호 암호화하기.(API) -> SecurityConfig에 @Bean 객체 설정 -> DI로 주입해주기.
+//		vo.getMemPassword() : 사용자가 입력한 비밀번호. ex)1234
+//		암호화된 비밀번호 반환.(1234 : $2a$10$9aHuYAGt7G55pysgvYHBbeH5QF/VmEvqUgrWNcKxFDgqstXwL0Tt2) 
 		String bcryptPw = pwEncoder.encode(vo.getMemPassword());
+//		DB에 저장하기 위해 setter
 		vo.setMemPassword(bcryptPw);
+		
+//		조인된 결과 행들을 모두 조회하기 Test!(where절 사용 X )
+//		모든 회원 조회 된다!
+//		List<AuthVO> atAuthVOs = mapper.memberList();
+//		System.out.println(atAuthVOs);
 
-//		DB에 저장하기 전 vo..
 		
+//		DB에 저장하기 전 memberVo : int idx = 0(기본값으로 초기화.)
 		
-//		1. vo db에 등록 
+//		1. memberVo db에 등록 
 		mapper.memberInsert(vo); //가입 성공하면1, 실패하면 0 반환
 		
-//		2. 권한테이블에 회원의 권한 저장하기.
+//		AuthVO(num=0, memID=null, auth=ROLE_USER)
+//		2. db 권한테이블에 회원의 권한VO 저장하기.
+//		왜 반복문을 쓰는지는, 테이블의 특성을 생각해보면 알 수 있다.(1대 다의 관계 )
 		for(AuthVO authVO : authList) {
 //			AuthVO saveAuthVO = new AuthVO();
 //			saveAuthVO.setMemID(vo.getMemID());
@@ -121,13 +135,8 @@ public class MemberController{
 			authVO.setMemID(vo.getMemID());
 			mapper.authInsert(authVO);
 		}
-		System.out.println(authList);
+//		System.out.println(authList);
 		
-		
-
-//		모든 회원 조회 된다.
-//		List<AuthVO> atAuthVOs = mapper.memberList();
-//		System.out.println(atAuthVOs);
 		
 //		<회원가입 성공 후, 메인화면으로 간다. >
 //		1. 회원가입 성공 모달창 보여주기.(리다이렉트 객체바인딩)
@@ -136,13 +145,17 @@ public class MemberController{
 		
 //		2. 로그인 상태로 변경!(세션 객체바인딩)
 		
-//		vo = mapper.getMember(vo.getMemIdx()); vo에는 Idx는 없으니까, nullpointerexception
+//		vo = mapper.getMember(vo.getMemIdx()); vo에는 Idx는 없으니까(0이니까..), nullpointerexception
 //		JOIN 결과 출력.
 		
-//		세션 객체바인딩 하기 전, DB에서 회원 조회를 한번 해줘야한다..
+//		JOIN으로 조회 -> where절 -> 해당하는 
+//		join된 vo 조회.
 		vo = mapper.getMemberByID(vo.getMemID());
+//		DB에 저장 후, 조회된 memberVo : int idx = auto_increment
+//		System.out.println(vo);
+//		(!!!!!!! 중요 !!!!!!)세션 객체바인딩 하기 전, DB에서 회원 조회를 한번 해줘야한다!!
 		session.setAttribute("member", vo); 
-//		main.jsp에서 ${member.memName}로 출력해서 사용 : ${!empty member}
+//		main.jsp에서 ${sessionScope.member.memName}로 출력해서 사용 : ${!empty member}
 		
 //		홈 화면으로
 		return "redirect:/"; 
@@ -170,11 +183,10 @@ public class MemberController{
 	}
 	
 //  로그인처리..
-//  http://localhost:8080/mvc03/memberLogin.do 요청
+//  http://localhost:8080/mvc05/memberLogin.do 요청
 //	ajax로도 해볼 것.. ??
 	@RequestMapping("/memberLogin.do")
 	public String memberLogin(Member vo, HttpSession session, RedirectAttributes rattr) {
-
 //		String memId = request.getParameter("memID");
 //		String memPassword = request.getParameter("memPassword");
 //		Member vo = new Member();
@@ -202,23 +214,34 @@ public class MemberController{
 		
 //		id,pwd 일치하는 회원 있으면 member객체 반환 / id, pwd 일치하지 않으면 null반환
 //		select where 쿼리 -> 일치하는 행 없으면 null 반환 !
-		Member member = mapper.memberLogin(vo);
+		
+//		로그인 시 입력한 비밀번호
+		String rawPassword = vo.getMemPassword();
+//			memberLigin : JOIN
+		vo = mapper.memberLogin(vo);
+		String encodePassword = vo.getMemPassword();
+//		
+		
 		
 //		System.out.println(member); //일치하는 회원 없으면 null
 		
 //		member == null or member != null
-		if(member == null) {
+		if(vo == null || pwEncoder.matches(rawPassword, encodePassword) == false) {
 //			리다이렉트 객체바인딩. -> 모달창에서 사용  
 			rattr.addFlashAttribute("msg1", "로그인 실패");
 			rattr.addFlashAttribute("msg2", "일치하는 회원이 없습니다. 다시 로그인해주세요.");
 			return "redirect:/memberLoginForm.do";
 			
 		} else {
+			
+			
+			vo = mapper.getMemberByID(vo.getMemID());
+			
 //			리다이렉트 객체바인딩. -> 모달창에서 사용  
 			rattr.addFlashAttribute("msg1", "로그인 성공");
-			rattr.addFlashAttribute("msg2", member.getMemName()+"님, 환영합니다.");
+			rattr.addFlashAttribute("msg2", vo.getMemName()+"님, 환영합니다.");
 //			첫번 째 로그인요청 -> 서버 내 쿠키 발행(세션ID) -> 클라이언트로 전달 + 세션 객체 바인딩 -> 여러 페이지에서 공유할 메모리 생성! 
-			session.setAttribute("member", member);
+			session.setAttribute("member", vo);
 //			리다이렉트로 두번 째 요청 -> 각각의 jsp페이지에서 session객체에 바인딩된 데이터 추출 !
 			return "redirect:/";
 		}
@@ -236,6 +259,9 @@ public class MemberController{
 	@PostMapping("/memberUpdate.do")
 	public String memberUpdate(Member vo, String memPassword1, String memPassword2,
 							HttpSession session, RedirectAttributes rattr) {
+		
+		List<AuthVO> authList = vo.getAuthList();
+		
 		if(vo.getMemID() == null || vo.getMemID().equals("") ||
 //		   memPassword는 pwd1과 pwd2가 일치할 경우에만 값이 넘어온다. 일치하지 않으면 null또는 빈문자열!!				
 //		   vo.getMemPassword() == null || vo.getMemPassword().equals("") ||
@@ -244,7 +270,7 @@ public class MemberController{
 		   vo.getMemName() == null || vo.getMemName().equals("") ||
 		   vo.getMemAge() == 0 || vo.getMemAge() >= 100 ||
 		   vo.getMemGender() == null || vo.getMemGender().equals("") ||
-		   vo.getMemEmail() == null || vo.getMemEmail().equals("") )
+		   vo.getMemEmail() == null || vo.getMemEmail().equals("") || authList.size() == 0)
 		{
 //			모달 창에 띄울 메세지 객체바인딩.
 			rattr.addFlashAttribute("msg1", "회원정보 수정 실패");
@@ -266,22 +292,50 @@ public class MemberController{
 //			addFlashAttribute() : jsp페이지에서 딱 한번만 사용할 객체바인딩 
 //			memberRegiser.jsp에서 EL ${msg}로 출력해서 사용
 //			누락 있으면 다시 회원가입화면으로 
+		String rawPassword = vo.getMemPassword();
+		String encodePassword = pwEncoder.encode(rawPassword);
+		vo.setMemPassword(encodePassword);
 		
-		mapper.memberUpdate(vo); //수정
+//		1. 회원테이블  수정
+		mapper.memberUpdate(vo);
 		
 		
-//		다시 회원 조회하지 않으면 ? -> vo에는 profile이없다! -> 그상태로 세션객체바인딩 하는 꼴.
-		vo = mapper.getMemberByIdx(vo.getMemIdx());
+//		ERROR 1452: 1452: Cannot add or update a child row: a foreign key constraint fails
+//		### Cause: java.sql.SQLIntegrityConstraintViolationException: Column 'auth' cannot be null
+//		기본키는 널이 되면 안된다!!!!!!!!!!!!!!
+//	 	부모 - 자식 테이블에 데이터가 있는데, 한쪽 테이블에 삭제, 추가 하려고 하면 에러난다. 
+//		mysql strict mode 해제 
+		
+//		2-1. 기존에 존재하는 권한 행 전부 삭제
+//		회원이 한명뿐이라면, 행 삭제 시 기본키가 null이 되어 에러 발생 가능! -> null방지 데이터 넣어주었음.
+//		한번에 최대 3개 행까지 삭제하겠지!
+		mapper.authDelete(vo.getMemID());
+		
+//		2-2. 새롭게 선택된 권한 행 추가.
+		for(AuthVO authVO : authList) {
+			authVO.setMemID(vo.getMemID()); 
+			mapper.authInsert(authVO);
+		}
+//		
+		
+		
+		
+		
+		
+		
+
+//		수정 후, 조회
+		vo = mapper.getMemberByID(vo.getMemID()); //조회(JOIN)
 		
 		rattr.addFlashAttribute("msg1", "회원정보 수정 성공");
 		rattr.addFlashAttribute("msg2", vo.getMemName() + "님, 회원정보가 수정되었습니다.");
-		
 //		회원정보 수정 후, 세션 객체에 덮어쓰기 바인딩 !!  
 		session.setAttribute("member", vo); 
-
 //		홈 화면으로
 		return "redirect:/"; 
 	}
+	
+	
 	
 	@RequestMapping("/memberImageForm.do")
 	public String memberImageForm() {
@@ -308,6 +362,7 @@ public class MemberController{
 		
 		String memProfile = null;
 		String oldProfile = null;
+		String memID = "";
 		int memIdx = 0;
 		
 //		request객체에 post방식으로 넘어온 데이터 들어있다.(member의 idx, profile)
@@ -365,7 +420,10 @@ public class MemberController{
 		}
 		
 		memIdx = Integer.parseInt(multi.getParameter("memIdx")); 
+		memID = multi.getParameter("memID"); 
+		
 		vo.setMemIdx(memIdx);
+//		vo.setMemID(memID);
 		vo.setMemProfile(memProfile);
 		
 //		기존 사진은 지우기. 
@@ -376,7 +434,9 @@ public class MemberController{
 		mapper.imageUpdate(vo); 
 		
 //		회원 사진 업데이트 후에, session객체바인딩 새롭게 해줘야 리다이렉트 시, jsp파일에서 인식한다.
-		vo = mapper.getMemberByIdx(memIdx);
+//		vo = mapper.getMemberByID(vo.getMemID());
+		vo = mapper.getMemberByIdx(vo.getMemIdx());
+		
 //		세션객체바인딩 새롭게 
 		session.setAttribute("member", vo); 
 		rattr.addFlashAttribute("msg1", "파일 업로드 성공");

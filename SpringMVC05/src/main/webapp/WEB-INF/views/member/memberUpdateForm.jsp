@@ -154,6 +154,35 @@
              <td colspan="2"><input type="text" id="memEmail" name="memEmail" class="form-control" maxlength="20" value="${sessionScope.member.memEmail}"/></td>            
            </tr>
            
+                      <!-- 권한체크박스추가 -->
+           <tr>
+             <td style="width: 110px; vertical-align: middle;">사용자 권한</td>
+             <td colspan="2">
+             						<!-- MemberVO : List<AuthVO> authList, AuthVO : String auth; -->
+                 <input type="checkbox" id="auth1" name="authList[0].auth" value="ROLE_USER" 
+                  <c:forEach var="authVO" items="${sessionScope.member.authList}">
+                    <c:if test="${authVO.auth eq 'ROLE_USER'}">
+                      checked
+                    </c:if> 
+                  </c:forEach>
+                 /> ROLE_USER  
+                 <input type="checkbox" id="auth2" name="authList[1].auth" value="ROLE_MANAGER"
+                   <c:forEach var="authVO" items="${sessionScope.member.authList}">
+                    <c:if test="${authVO.auth eq 'ROLE_MANAGER'}">
+                      checked
+                    </c:if> 
+                  </c:forEach>
+                  /> ROLE_MANAGER
+	 			<input type="checkbox" id="auth3" name="authList[2].auth" value="ROLE_ADMIN"
+                   <c:forEach var="authVO" items="${sessionScope.member.authList}">
+                     <c:if test="${authVO.auth eq 'ROLE_ADMIN'}">
+                      checked
+                     </c:if> 
+                    </c:forEach>
+                  /> ROLE_ADMIN
+           </tr>
+           
+           
            <tr>
              <td colspan="3" style="text-align: left;">
                 <span id="passMessage" style="color: red"> </span>   <input type="button" class="btn btn-primary btn-sm pull-right" onclick="updateCheck()" value="수정" />

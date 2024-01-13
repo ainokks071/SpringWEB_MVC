@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Spring MVC04</title>
+  <title>Spring MVC05</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -36,7 +36,7 @@
 <jsp:include page="../common/header.jsp"></jsp:include>
  
 <div class="container">
-  <h2>SpringMVC04</h2>
+  <h2>SpringMVC05</h2>
   <div class="panel panel-default">
     <div class="panel-heading">로그인 화면</div>
     <div class="panel-body">

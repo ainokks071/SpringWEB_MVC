@@ -53,6 +53,7 @@
       <form action="${contextPath}/memberImageInsert.do?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
       	<!--로그인 한 회원의 idx값 넘어간다.  -->
          <input type="hidden" name="memIdx" value="${sessionScope.member.memIdx}"/>
+         <input type="hidden" name="memID" value="${sessionScope.member.memID}"/>
          
          <table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd;">
            

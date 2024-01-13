@@ -17,7 +17,6 @@ public interface MemberMapper {
 //	회원 가입 
 	public int memberInsert(Member vo); //회원가입 insert 성공하면 1, 실패하면 0
 	
-	public void authInsert(AuthVO saveAuthVO);
 	
 //	로그인 체크
 	public Member memberLogin(Member vo);
@@ -28,14 +27,26 @@ public interface MemberMapper {
 //	사진 등록 
 	public void imageUpdate(Member vo);
 
-//	아이디로 회원 한명 조회 
+//	아이디로 회원 한명 조회 (JOIN)
 	public Member getMemberByID(String memID);
 	
-//	idx로 회원 한명 조회 
+//	idx로 회원 한명 조회 JOIN
 	public Member getMemberByIdx(int memIdx);
 
 //	모든 회원 조회
     public List<AuthVO> memberList();
+
+//	public void authUpdate(AuthVO authVO);
+//    public List<AuthVO> getAuthList(String memID);
+
+	
+
+	
+	public void authDelete(String string);
+
+	public void authInsert(AuthVO authVO);
+	
+	
 
 
 }

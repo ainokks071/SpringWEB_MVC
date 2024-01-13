@@ -9,39 +9,64 @@
     values((SELECT IFNULL(MAX(memIdx)+1,1) FROM member mem), #{memID}, #{memPassword}, #{memName}, #{memAge}, #{memGender}, #{memEmail}, #{memProfile})
   </insert>
   
-  <insert id="authInsert" parameterType="kr.bit.entity.AuthVO">
-    insert into member_auth(memID, auth)
-    values(#{memID}, #{auth}) 
-  </insert>
+  
+   <update id="authUpdate" parameterType="kr.bit.entity.AuthVO">
+  	update member_auth set auth = #{auth} where memID = #{memID}
+  </update>
+  
   
   
   <select id="memberDbcheck" parameterType="String" resultType="String">
     select memID from member where memID = #{memID}
   </select>
   
-  <select id="memberLogin" parameterType="kr.bit.entity.Member" resultType="kr.bit.entity.Member">
+  
+  
+  
+  <!-- 회원가입 시, 비밀번호는 암호화되어 db에 저장되므로 #{memPassword}는 사용 못한다. -->
+<!--   <select id="memberLogin" parameterType="kr.bit.entity.Member" resultType="kr.bit.entity.Member">
     select * from member where memID = #{memID} and memPassword = #{memPassword}
+  </select> -->
+  <select id="memberLogin" parameterType="kr.bit.entity.Member" resultMap="memberMap">
+	select * from member M left outer join member_auth A on M.memID = A.memID where M.memID = #{memID}
   </select>
+  
+  
+  
   
   <update id="memberUpdate" parameterType="kr.bit.entity.Member">
   	update member set memPassword = #{memPassword}, memName = #{memName}, memAge = #{memAge},
   	 memGender = #{memGender}, memEmail = #{memEmail} where memIdx = #{memIdx}
   </update>
   
+  
   <update id="imageUpdate" parameterType="kr.bit.entity.Member" >
   	update member set memProfile = #{memProfile} where memIdx = #{memIdx}
   </update>
 
-  <select id="getMemberByIdx" parameterType="Integer" resultType="kr.bit.entity.Member">
+<!--   <select id="getMemberByIdx" parameterType="Integer" resultType="kr.bit.entity.Member">
     select * from member where memIdx = #{memIdx}
   </select>
+ -->  
+
+  <select id="getMemberByIdx" parameterType="Integer" resultMap="memberMap">
+	select * from member M left outer join member_auth A on M.memID = A.memID where M.memIdx = #{memIdx}
+  </select>
+  
   
   <!-- join 으로 바꾸기 -->
 <!--   <select id="getMemberByID" parameterType="String" resultType="kr.bit.entity.Member">
     select * from member where memID = #{memID}
   </select> -->  
   
-  
+  <!-- join -->
+  <select id="getMemberByID" parameterType="String" resultMap="memberMap">
+    <!-- select의 결과가 Member 타입이 아니다. 가로로 붙여진 두 개의 테이블 연상하기 -->
+	select * from member M left outer join member_auth A on M.memID = A.memID where M.memID = #{memID}
+    <!-- * 아니어도 가능 -> select A.memID, A.auth, B.memName from member_auth A join member B on B.memID = A.memID where A.memID = #{memID} -->
+    <!-- 이건 불가능 : where절이 없으므로, 여러 행 조회됨!
+     select * from member_auth A join member B on B.memID = A.memID -->
+  </select>
   <!-- id property = PK -->
   <resultMap type="kr.bit.entity.Member" id="memberMap">
 	<id property="memID" column="memID"/>
@@ -55,26 +80,48 @@
     <collection property="authList" resultMap="authMap"> </collection>
   </resultMap>
 											 <!--authMap : 아래의 resultMap 참조  -->
-  
   <resultMap type="kr.bit.entity.AuthVO" id="authMap">
 	<id property="num" column="num"/>
  	<result property="memID" column="memID"/>
     <result property="auth" column="auth"/>
   </resultMap>
   
-  <!-- join -->
-  <select id="getMemberByID" parameterType="String" resultMap="memberMap">
-    <!-- select의 결과가 Member 타입이 아니다. 가로로 붙여진 두 개의 테이블 연상하기 -->
-	select * from member_auth A join member B on B.memID = A.memID where A.memID = #{memID}
-    <!-- * 아니어도 가능 -> select A.memID, A.auth, B.memName from member_auth A join member B on B.memID = A.memID where A.memID = #{memID} -->
-    <!-- 이건 불가능 : where절이 없으므로, 여러 행 조회됨!
-     select * from member_auth A join member B on B.memID = A.memID -->
-  </select>
+  
+  
+<!--   <update id="imageUpdate" parameterType="kr.bit.entity.Member" >
+  	update member set memProfile = #{memProfile} where memIdx = #{memIdx}
+  </update>
+ -->  
+  
+  
+  
+  
+  
+  
+  
   
   <!-- join된 테이블의 모든 회원 조회(모든 행 조회) -> list로 반환 -->
   <select id="memberList" resultMap="memberMap">
-     select * from member_auth A join member B on B.memID = A.memID
+	select * from member M left outer join member_auth A
   </select>
+  
+  
+  
+  
+<!--   <select id="getAuthList" parameterType="String" resultType="kr.bit.entity.AuthVO">
+    select * from member_auth where memID = #{memID}
+  </select>
+ -->  
+ 
+  <delete id="authDelete" parameterType="String">
+  	delete from member_auth where memID = #{memID} 
+  </delete>
+  
+  <insert id="authInsert" parameterType="kr.bit.entity.AuthVO">
+    insert into member_auth(memID, auth)
+    values(#{memID}, #{auth}) 
+  </insert>
+  
   
   
 

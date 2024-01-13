@@ -111,8 +111,8 @@
 	  
 	  /* 체크박스에 체크하지 않으면 false반환 ! */
 	  var auth1 = $('input:checkbox[id="auth1"]').is(":checked");
-	  var auth2 = $('input:checkbox[id="auth1"]').is(":checked");
-	  var auth3 = $('input:checkbox[id="auth1"]').is(":checked");
+	  var auth2 = $('input:checkbox[id="auth2"]').is(":checked");
+	  var auth3 = $('input:checkbox[id="auth3"]').is(":checked");
 /* 	  var auth1 = $("#auth1").val();
 	  var auth2 = $("#auth2").val();
 	  var auth3 = $("#auth3").val();   */
