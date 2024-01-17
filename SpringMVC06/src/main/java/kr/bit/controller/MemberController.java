@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kr.bit.entity.AuthVO;
+import kr.bit.entity.Board;
 import kr.bit.entity.Member;
 import kr.bit.mapper.MemberMapper;
 
@@ -38,6 +40,15 @@ public class MemberController{
 	@GetMapping("/access-denied")
 	public String accessDenied() {
 		return "access-denied"; //access-denied.jsp 
+	}
+	
+	
+	@GetMapping("/totalList.do")
+	public String totalList(Model model) {
+		List<Board> totalList = mapper.totalList();
+		System.out.println(totalList);
+		model.addAttribute("member", totalList);
+		return "main"; //access-denied.jsp 
 	}
 
 	
@@ -239,8 +250,11 @@ public class MemberController{
 		
 //		로그인 시 입력한 비밀번호
 		String rawPassword = vo.getMemPassword();
-//			memberLigin : JOIN
+		
+		
+//			memberLogin : JOIN으로 DB에서 회원 조회 -> Member로 받아준다.
 		vo = mapper.memberLogin(vo.getMemID());
+//		암호화된 비밀번호.
 		String encodePassword = vo.getMemPassword();
 //		
 		

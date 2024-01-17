@@ -58,7 +58,7 @@
     </div>
     
     <div class="panel-body"> <!-- 탭 메뉴 -->
-    
+    	
 		<ul class="nav nav-tabs">
 		  <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
 		  <li><a data-toggle="tab" href="#menu1">게시판</a></li>
@@ -68,7 +68,14 @@
 		<div class="tab-content">
 		  <div id="home" class="tab-pane fade in active">
 		    <h3>HOME</h3>
-		    <p>Some content.</p>
+		    <p>
+		    
+		    
+		    
+		    
+	  				${member}
+		    
+		    </p>
 		  </div>
 		  
 		  <div id="menu1" class="tab-pane fade">

@@ -14,9 +14,14 @@ public class Member {
 	  private int memAge; 
 	  private String memGender;
 	  private String memEmail;
-	  private String memProfile; 
+	  private String memProfile;
 	  
 	  private List<AuthVO> authList; 
+//	  private List<Board> boardList; 
+	  
+	  
+	  
+	  
 	  //authList[0].auth, authList[1].auth, authList[2].auth
 
 }

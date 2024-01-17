@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import kr.bit.entity.AuthVO;
+import kr.bit.entity.Board;
 import kr.bit.entity.Member;
 
 @Mapper
@@ -37,7 +38,7 @@ public interface MemberMapper {
     public List<AuthVO> memberList();
 
 //	public void authUpdate(AuthVO authVO);
-//    public List<AuthVO> getAuthList(String memID);
+//  public List<AuthVO> getAuthList(String memID);
 
 	
 
@@ -45,6 +46,9 @@ public interface MemberMapper {
 	public void authDelete(String string);
 
 	public void authInsert(AuthVO authVO);
+
+	public List<Board> totalList();
+//	public Member totalList();
 	
 	
 

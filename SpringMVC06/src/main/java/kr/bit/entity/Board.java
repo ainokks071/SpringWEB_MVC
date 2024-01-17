@@ -26,7 +26,9 @@ public class Board {
 	  private String writer; // 작성자
 	  private String indate; // 작성일
 	  private int count; // 조회수
+
+	  private Member member;
 	  
-	  // setter , getter 메서드 
 	  
+	  // setter , getter 메서드
 }
