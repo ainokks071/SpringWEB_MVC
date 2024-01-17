@@ -117,12 +117,12 @@
            <tr>
              <td style="width: 110px; vertical-align: middle;">비밀번호</td>
              															<!--input창에 키보드 입력할 때마다 함수 호출  -->
-             <td colspan="2"><input type="password" id="memPassword1" name="memPassword1" onkeyup="passwordCheck()" class="form-control" maxlength="20" value="${sessionScope.member.memPassword}"/></td>            
+             <td colspan="2"><input type="password" id="memPassword1" name="memPassword1" onkeyup="passwordCheck()" class="form-control" maxlength="20" <%-- value="${sessionScope.member.memPassword}" --%>/></td>            
            </tr>
            <tr>
              <td style="width: 110px; vertical-align: middle;">비밀번호확인</td>
              										<!-- onkeyup : 키보드를 눌렀다 떼었을 때, check()로 위에 입력한 비밀번호와 입력하는지 확인  -->
-             <td colspan="2"><input type="password" id="memPassword2" name="memPassword2" onkeyup="passwordCheck()" class="form-control" maxlength="20" value="${sessionScope.member.memPassword}"/></td>            
+             <td colspan="2"><input type="password" id="memPassword2" name="memPassword2" onkeyup="passwordCheck()" class="form-control" maxlength="20" <%-- value="${sessionScope.member.memPassword}" --%>/></td>            
            </tr>
            
             <tr>
