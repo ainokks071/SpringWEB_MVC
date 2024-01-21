@@ -107,8 +107,6 @@
 	<association property="member" resultMap="memberMap"> </association>
    </resultMap>
   
-  
-  
     <!-- id property = PK -->
   <resultMap type="kr.bit.entity.Member" id="memberMap">
 	<id property="memID" column="memID"/>

@@ -10,4 +10,5 @@
 <aop-project name="SpringMVC_basic02"/>
 <aop-project name="SpringMVC_basic03"/>
 <aop-project name="SpringStart"/>
+<aop-project name="AuthorityBoard"/>
 </aop-reference-model>
