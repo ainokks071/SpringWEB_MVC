@@ -32,7 +32,8 @@ public class BoardRestController {
 	// 	http://localhost:8080/mvc02/board '/all'
 	@GetMapping("/all")
 	public List<Board> boardList() {
-		List<Board> boardList = mapper.boardList();
+//		List<Board> boardList = mapper.boardList();
+		List<Board> boardList = mapper.boardList2();
 //		- String리턴 -> JSP 포워딩 or 리다이렉트. 
 		
 //		- 객체(VO, DTO, List...) 리턴 -> 클라이언트에게 JSON 데이터 형식으로 리턴하겠다. @ResponseBody : ajax로 응답

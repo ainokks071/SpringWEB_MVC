@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- namespace : MapperInterface와 Mapper.xml 연결 !-->
+<mapper namespace="kr.bit.mapper.BoardMapper">
+  
+  <!--id : MapperInterface내부의 메서드 이름, resultType : Entity -->
+  <select id="boardList" resultType="kr.bit.entity.Board">
+ 	select * from myboard order by idx asc
+  </select>
+  
+  <!-- #으로 BoardVO에 저장된, 클라이언트가 입력한 데이터 추출. -->
+  <insert id="boardInsert" parameterType="kr.bit.entity.Board">
+    insert into myboard(memID, title, content, writer)
+    values(#{memID}, #{title}, #{content}, #{writer}) 
+  </insert>
+  
+  <!-- parameterType int형 하나일 때 생략 가능 -->
+  <select id="boardContent" parameterType="Integer" resultType="kr.bit.entity.Board">
+ 	select * from myboard where idx = #{idx}
+  </select>
+  
+  <delete id="boardDelete" parameterType="Integer">
+    delete from myboard where idx = #{idx}
+  </delete>
+  
+  <update id="boardUpdate" parameterType="kr.bit.entity.Board">
+  	update myboard set title=#{title}, content=#{content} where idx=#{idx} 
+  </update>
+  
+<!-- 어노테이션으로 대체가능 <update id="boardCount" parameterType="Integer">
+    update myboard set count = count + 1 where idx = #{idx} 
+  </update> -->
+  
+  
+    <select id="boardList2" resultMap="boardMap">
+	select * from member M 
+	left outer join myboard B on M.memID = B.memID 
+	left outer join member_auth A on M.memID = A.memID
+  </select>
+  
+  <resultMap type="kr.bit.entity.Board" id="boardMap">
+    <id property="idx" column="idx"/>
+	<result property="memID" column="memID"/>
+	<result property="title" column="title"/>
+	<result property="content" column="content"/>
+	<result property="writer" column="writer"/>
+	<result property="indate" column="indate"/>
+	<result property="count" column="count"/>
+	<!-- association : Board(1) 'has one' Member(다)-->
+	<association property="member" resultMap="memberMap"> </association>
+   </resultMap>
+  
+    <!-- id property = PK -->
+  <resultMap type="kr.bit.entity.Member" id="memberMap">
+	<id property="memID" column="memID"/>
+	<result property="memIdx" column="memIdx"/>
+	<result property="memPassword" column="memPassword"/>
+	<result property="memName" column="memName"/>
+	<result property="memAge" column="memAge"/>
+	<result property="memGender" column="memGender"/>
+	<result property="memEmail" column="memEmail"/>
+	<result property="memProfile" column="memProfile"/>
+	<!-- collection : Member 'has many' Auth -->
+    <collection property="authList" resultMap="authMap"> </collection>
+    <!-- <collection property="boardList" resultMap="boardMap"> </collection>-->
+   </resultMap>
+											 <!--authMap : 아래의 resultMap 참조  -->
+  <resultMap type="kr.bit.entity.AuthVO" id="authMap">
+	<id property="num" column="num"/>
+ 	<result property="memID" column="memID"/>
+    <result property="auth" column="auth"/>
+  </resultMap>
+  
+    
+</mapper>

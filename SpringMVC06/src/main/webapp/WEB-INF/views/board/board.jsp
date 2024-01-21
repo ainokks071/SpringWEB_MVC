@@ -8,10 +8,6 @@
 <c:set var="user" value="${SPRING_SECURITY_CONTEXT.authentication.principal}"/>
 <c:set var="auth" value="${SPRING_SECURITY_CONTEXT.authentication.authorities}"/>
 
-
-
-
-
 <!-- Spring mvc 03 : 회원가입, 로그인 -> 권한 : 내가 작성한 글만 컨트롤 가능하게. --> 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,9 +46,8 @@
   	}
   	
 	/* 콜백함수 */  	/* list가 변환된 JSON data=[{   },{    },{    },,, ] */
-  	function makeView(data) {
-/*   		alert(data); */
- 
+  	function makeView(list) {
+
   	    var listHtml="<table class='table table-bordered'>";
 	  	    listHtml+="<tr>";
 	  	    listHtml+="<td>번호</td>";
@@ -66,23 +61,30 @@
   	    /* index   0      1      2  */
   	    /* JSON data=[{   }, {   }, {   }, ...] */ 
  		/* obj={"idx":5,"title":"게시판"~~ } */
-  	    $.each(data, function(index, board){
+  	    $.each(list, function(index, board) {
   	    	// 반복문 내부에 form태그 안되는 이유 : input의 name속성 값이 board.idx에 따라 변한다.
   	    	// ex) <input type='text' name='title1234'> 이런식으로.. 
   	    	// BoardVO의 idx, title, content와 일치 X -> 불가능 !!! -> 파라메터 하나씩 받아주자.
   	    	//listHtml+="<form id='newFrm"+board.idx+"'>";
   	    	
   	    	listHtml+="<tr>";
-  	    	listHtml+="<td>"+board.idx+"</td>";
+ 	  	    listHtml+="<td>"+board.idx+"</td>";
   	    	/* 제목을 클릭하면 글 번호가 boardContent()로 넘어감 */
   	    	listHtml+="<td id='boardTitle"+board.idx+"'><a href='javascript:boardContent(" + board.idx + ")'>" + board.title + "</a></td>";
   	    	/* listHtml+="<td id='boardTitle"+board.idx+"'><button onclick='boardContent(" + board.idx + ")'>" + board.title + "</button></td>"; */
-  	        listHtml+="<td>"+board.writer+"</td>";
+  	        listHtml+="<td><a href='javascript:memberDetail(" + board.memID + ")'>"
+	  	        for(var i = 0; i < board.member.authList.length; i++) {
+	  	        	var a = board.member.authList[i].auth;
+		  	        	listHtml += a;
+		  	        	listHtml += "&nbsp";
+	  	    }
+  	        listHtml+="</a></td>";
   	        
   	        /* indate = 2023-12-18 12:34:33 문자열 !! -> 자바스크립트 문자열 자르기 함수 구글링 */
   	        /* 문자열 자르기 방법1 substr(시작위치, 길이); */
   	        /* listHtml+="<td>"+board.indate.substr(0, 10)+"</td>"; */
   	        /* 문자열 자르기 방법2 split(' ')[0] : 2023-12-18 19:12:33 -> 공백을 기준으로 앞[0], 뒤[1] */
+  	        /* 트러블슈팅 left join -> indate가 null -> .split함수 호출 -> 에러!!! -> inner join 안전하네.*/
   	        listHtml+="<td>"+board.indate.split(" ")[0]+"</td>";
   	        listHtml+="<td id='boardCount"+board.idx+"'>"+board.count+"</td>";
   	        listHtml+="</tr>";
@@ -101,22 +103,23 @@
     	    listHtml+="<textarea id='textArea"+board.idx+"' readonly rows='7' class='form-control'></textarea>";
 	    	listHtml+="<br/>";
 	    	
+	  	    /* if("${auth[0]}" == 'ROLE_USER') */
 	    	/* 본인이 작성한 글이면 수정, 삭제버튼 클릭 가능 */
-	  	    if("${sessionScope.member.memID}" == board.memID) {
-		 	 	listHtml+="<span id='updateBtn"+board.idx+"'><button class='btn btn-primary btn-sm' onclick='boardUpdateForm("+board.idx+")'>수정화면</button></span>&nbsp;"; /* nbsp; : 공백 */
-			 	listHtml+="<button class='btn btn-warning btn-sm' onclick='boardDelete("+board.idx+")'>삭제</button>&nbsp;";
-		 	    listHtml+="<button class='btn btn-info btn-sm' onclick='boardList()'>리스트로</button>";
-	  	    } else {
-		 	 	listHtml+="<span id='updateBtn"+board.idx+"'><button disabled class='btn btn-primary btn-sm' onclick='boardUpdateForm("+board.idx+")'>수정화면</button></span>&nbsp;"; /* nbsp; : 공백 */
-			 	listHtml+="<button disabled class='btn btn-warning btn-sm' onclick='boardDelete("+board.idx+")'>삭제</button>&nbsp;";
-		 	    listHtml+="<button class='btn btn-info btn-sm' onclick='boardList()'>리스트로</button>";
-	  	    }
+			if("${user}.member.memID" == board.memID) {
+				listHtml+="<span id='updateBtn"+board.idx+"'><button class='btn btn-primary btn-sm' onclick='boardUpdateForm("+board.idx+")'>수정화면</button></span>&nbsp;"; /* nbsp; : 공백 */
+				listHtml+="<button class='btn btn-warning btn-sm' onclick='boardDelete("+board.idx+")'>삭제</button>&nbsp;";
+				listHtml+="<button class='btn btn-info btn-sm' onclick='boardList()'>리스트로</button>";
+			}
+					
+		 	listHtml+="<span id='updateBtn"+board.idx+"'><button disabled class='btn btn-primary btn-sm' onclick='boardUpdateForm("+board.idx+")'>수정화면</button></span>&nbsp;"; /* nbsp; : 공백 */
+			listHtml+="<button disabled class='btn btn-warning btn-sm' onclick='boardDelete("+board.idx+")'>삭제</button>&nbsp;";
+		 	listHtml+="<button class='btn btn-info btn-sm' onclick='boardList()'>리스트로</button>";
+	    	
     	    listHtml+="</td>";
     	    listHtml+="</tr>";
 /*     	    listHtml+="<tr style='display:block'>";
     	    listHtml+="<td><button onclick='boardDelete(" + board.idx + ")'>삭제</button></td>";
     	    listHtml+="</tr>"; */
-  	    	});
   	       
   	       /* 로그인 한 회원만 글쓰기 보여주기. */		
   	       if(${!empty user.member}) {
@@ -130,12 +133,24 @@
 		 	   listHtml+="</tr>";
   	       }
   	       
+	});
 	 	   listHtml+="</table>";
 	
 	 	   $("#viewList").html(listHtml);
      	   //boardList() 호출 시, 항상 글쓰기 form은 감추고 리스트 보여준다.
 	 	   closeForm();
 	}
+	
+	  	    
+	  	    
+  	    
+  	    
+	  	   
+	
+  	    
+	
+	
+	
 	/* 수정화면버튼 클릭 : 1)textarea readonly false로 변경 2) 제목 input으로 변경 3)수정하기버튼 변경   */
 	function boardUpdateForm(idx) {
 		/* 1)textarea readonly false로 변경 */
@@ -185,6 +200,7 @@
 		$("#textA" + vo.idx).attr("readonly", true);
 	  }
 	}
+	
 	
 /* 	방법 2: Controller에서 한번에 처리 : boardContent.do로 요청 -> 조회수 증가 + 갱신된 글 조회 한번에 처리
 	function boardContent2(idx) {
@@ -284,7 +300,9 @@
 	  		});
 	  	}
 
-		
+		function memberDetail(memID) {
+			location.href='memberDetail.do?'+memID;
+		}
 		
 		/* 파라메터 한번에 수집하기 테스트 : 불가 
 		function boardUpdate(idx) {

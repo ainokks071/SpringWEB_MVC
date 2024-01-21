@@ -31,5 +31,46 @@
 <!-- 어노테이션으로 대체가능 <update id="boardCount" parameterType="Integer">
     update myboard set count = count + 1 where idx = #{idx} 
   </update> -->
+  
+  
+<select id="boardList2" resultMap="boardMap">
+	select * from member M 
+	inner join myboard B on M.memID = B.memID 
+	inner join member_auth A on M.memID = A.memID
+</select>
+  
+  <resultMap type="kr.bit.entity.Board" id="boardMap">
+    <id property="idx" column="idx"/>
+	<result property="memID" column="memID"/>
+	<result property="title" column="title"/>
+	<result property="content" column="content"/>
+	<result property="writer" column="writer"/>
+	<result property="indate" column="indate"/>
+	<result property="count" column="count"/>
+	<!-- association : Board(1) 'has one' Member(다)-->
+	<association property="member" resultMap="memberMap"> </association>
+   </resultMap>
+  
+    <!-- id property = PK -->
+  <resultMap type="kr.bit.entity.Member" id="memberMap">
+	<id property="memID" column="memID"/>
+	<result property="memIdx" column="memIdx"/>
+	<result property="memPassword" column="memPassword"/>
+	<result property="memName" column="memName"/>
+	<result property="memAge" column="memAge"/>
+	<result property="memGender" column="memGender"/>
+	<result property="memEmail" column="memEmail"/>
+	<result property="memProfile" column="memProfile"/>
+	<!-- collection : Member 'has many' Auth -->
+    <collection property="authList" resultMap="authMap"> </collection>
+    <!-- <collection property="boardList" resultMap="boardMap"> </collection>-->
+   </resultMap>
+											 <!--authMap : 아래의 resultMap 참조  -->
+  <resultMap type="kr.bit.entity.AuthVO" id="authMap">
+	<id property="num" column="num"/>
+ 	<result property="memID" column="memID"/>
+    <result property="auth" column="auth"/>
+  </resultMap>
+  
     
 </mapper>

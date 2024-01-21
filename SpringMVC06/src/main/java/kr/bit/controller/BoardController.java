@@ -1,6 +1,7 @@
 package kr.bit.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 //Spring mvc 03 : 회원가입, 로그인 -> 권한 : 내가 작성한 글만 컨트롤 가능하게. 
@@ -15,6 +16,13 @@ public class BoardController{
 	//http://localhost:8080/mvc03/board.do 요청 
 	@RequestMapping("/board.do")
 	public String board() {
+		return "board/board"; 
+		// views/board/board.jsp			
+		//포워딩 한 번 하고 끝! -> url 변경 X : http://localhost:8080/mvc03/board.do 유지
+	}
+	
+	@RequestMapping("/memberDetail.do/{memID}")
+	public String memberDetail(@PathVariable String memID) {
 		return "board/board"; 
 		// views/board/board.jsp			
 		//포워딩 한 번 하고 끝! -> url 변경 X : http://localhost:8080/mvc03/board.do 유지
