@@ -5192,3 +5192,8 @@ java.lang.Exception: File not found: /Users/kks/dev-study/SpringWEB_MVC/Authorit
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2024-01-21 20:41:56.497
 !MESSAGE Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.core.resources 2 2 2024-01-21 20:46:50.294
+!MESSAGE Save operation warnings.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2024-01-21 20:46:50.294
+!MESSAGE The project description file (.project) for 'AuthorityBoard' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
