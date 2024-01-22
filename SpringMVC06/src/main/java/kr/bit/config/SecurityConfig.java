@@ -18,9 +18,12 @@ import kr.bit.security.MemberUserDetailsService;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
+	
+
+
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-//		요청에 관한 보안 설정 
 		
 //		시큐리티 전용 한글인코딩 ex) 회원가입 
 		CharacterEncodingFilter filter = new CharacterEncodingFilter();
@@ -29,44 +32,51 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.addFilterBefore(filter,CsrfFilter.class);
 		
 		
-//		스프링 시큐리티 :	로그인, 로그아웃, 예외처리  -> HttpSecurity객체에 정보 저장
+//		1) HttpSecurity : 요청에 관한 경로(url이동), 권한(permit) 설정  
+//		스프링 시큐리티 :	로그인, 로그아웃, 예외처리  -> HttpSecurity에 설정
 		http
 			.authorizeRequests()
 				.antMatchers("/")
 				.permitAll() //루트경로는 모든 사용자 허용
 				.and()
 			.formLogin()
-				.loginPage("/memberLoginForm.do") //커스텀 로그인 페이지로
-				.loginProcessingUrl("/memberLogin.do") //로그인 처리는 스프링에서 해준다. -> UserDetailsService -> mapper
+				.loginPage("/memberLoginForm.do") //커스텀(직접 만든.) 로그인 페이지로 이동
+				//로그인 처리는 스프링에서 해준다.(우리가만든 controller로 X) -> UserDetailsService -> mapper
+				//memberLogin.do 요청이 오면 스프링이 로그인 처리 해준다.(loginForm.jsp에 url 명시!)
+				.loginProcessingUrl("/memberLogin.do")  
 				.permitAll()
 				.and()
 			.logout()
 				//시큐리티 로그아웃 : get방식 x -> post방식 !			
-				//스프링에서 기본적으로 '/logout' url 설정해놓았다. -> header.jsp에 로그아웃 url "/logout" 설정 필요 
-			 	.invalidateHttpSession(true) //세션 끊음 
-			 	.logoutSuccessUrl("/") //로그아웃 성공하면 루트로 
+				//스프링에서 기본적으로 '/logout' url 설정해놓았다. -> header.jsp에 로그아웃 url "/logout" 명시!
+			 	.invalidateHttpSession(true) //세션 끊음
+			 	//로그아웃 성공하면 루트경로("/")로 이동하던 것을 ("/main")으로 변경
+			 	.logoutSuccessUrl("/bye") 
 			 	.and()
 			.exceptionHandling().accessDeniedPage("/access-denied"); //예외발생하면 access-denied.jsp로 이동
 	}
 	
+//  MemberUserDetailsService(로그인 처리)를 실행시키는 역할 !!  
+//	-> MemberUserDetailsService()메서드 호출, 패스워드인코더 연결 
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(MemberUserDetailsService()).passwordEncoder(passwordEncoder());
+	}
+	
+	//로그인 처리 서비스 계층 빈 등록
+	@Bean
+	public UserDetailsService MemberUserDetailsService() {
+		return new MemberUserDetailsService();
+	}
+    
+    
+    
 	// 패스워드 인코딩 객체 -> 의존성 주입 받을 것.
     @Bean 
     public PasswordEncoder passwordEncoder() {
 		 return new BCryptPasswordEncoder(); 
     }
     
-    //로그인 처리 서비스 계층 빈 등록
-    @Bean
-    public UserDetailsService MemberUserDetailsService() {
-    	return new MemberUserDetailsService();
-    }
-    
-//  MemberUserDetailsService(로그인 처리)를 실행시키는 역할 !! 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    	auth.userDetailsService(MemberUserDetailsService()).passwordEncoder(passwordEncoder());
-    }
-    
-    }
+}
 
 	

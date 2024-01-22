@@ -24,12 +24,13 @@
 	              xhr.setRequestHeader(csrfHeaderName, csrfTokenValue)
 	          },
 	  		success : function(){
-	  			location.href="${contextPath}/";
+	  			location.href="${contextPath}/bye";
 	  		},
 	  		error : function(){ alert("error");}    		
 	  	}); 
 	}
-	/* 방법 2 : js, post */
+	
+	/* 방법 2 : js로 post요청 하기 */
 	function securityLogoutPost(){
 		    let f = document.createElement('form');
 		    let obj;
@@ -51,11 +52,11 @@
   <div class="container-fluid">
     <div class="navbar-header">
     					<!--contextPath = /mvc03 : localhost:8080/mvc03/ 요청-->
-      <a class="navbar-brand" href="${contextPath}">Spring MVC06</a>
+      <a class="navbar-brand" href="${contextPath}/main">Spring MVC06</a>
     </div>
     <ul class="nav navbar-nav">
     					<!--contextPath = /mvc03 : localhost:8080/mvc03/ 요청-->
-      <li class="active"><a href="${contextPath}">Home</a></li>
+      <li class="active"><a href="${contextPath}/main">Home</a></li>
       
       <li><a href="#">Page 1</a></li>
       
@@ -111,7 +112,7 @@
       	<a> ${user.member.memName}님 환영합니다. (
     	<security:authorize access="hasRole('ROLE_USER')"> USER </security:authorize>
     	<security:authorize access="hasRole('ROLE_MANAGER')"> MANAGER </security:authorize>
-    	<security:authorize access="hasRole('ROLE_ADMIN')"> ADMIN </security:authorize>
+    	<security:authorize access="hasRole('ROLE_ADMIN')"> ADMIN </security:authorize> 
     	)
       		<%--<c:forEach items="${user.member.authList}" var="authVO">
        			<c:if test="${authVO.auth == 'ROLE_USER'}"> USER </c:if>
@@ -123,7 +124,7 @@
       <li><a href="${contextPath}/memberUpdateForm.do"><span class="glyphicon glyphicon-wrench"></span> 회원정보 수정</a></li>
       <li><a href="${contextPath}/memberImageForm.do"><span class="glyphicon glyphicon-picture"></span> 프로필사진 수정 </a></li>
       <!-- <li><a href="javascript:securityLogout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li> -->
-      <li><a href="javascript:securityLogoutPost()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      <li><a href="javascript:securityLogout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
      </ul>
      </security:authorize>
 <%--     </c:if>--%>

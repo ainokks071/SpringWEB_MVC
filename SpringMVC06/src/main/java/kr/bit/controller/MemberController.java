@@ -8,12 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.oreilly.servlet.MultipartRequest;
@@ -22,7 +28,9 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import kr.bit.entity.AuthVO;
 import kr.bit.entity.Board;
 import kr.bit.entity.Member;
+import kr.bit.entity.MemberUser;
 import kr.bit.mapper.MemberMapper;
+import kr.bit.security.MemberUserDetailsService;
 
 //Spring mvc 03 : 회원가입, 로그인 -> 권한 : 내가 작성한 글만 컨트롤 가능하게. 
 
@@ -31,6 +39,10 @@ public class MemberController{
 	
 	@Autowired
 	private MemberMapper mapper;
+	
+	@Autowired
+	MemberUserDetailsService memberUserDetailsService;
+
 	
 //  DI
 //	SecurityConfig에 빈 추가, 사용자 MemberController, 공급자 PasswordEncoder (인터페이스), 
@@ -42,6 +54,21 @@ public class MemberController{
 		return "access-denied"; //access-denied.jsp 
 	}
 	
+	 // 스프링 보안(새로운 세션 생성 메서드)
+	 // UsernamePasswordAuthenticationToken -> 회원정보+권한정보
+	 protected Authentication createNewAuthentication(Authentication currentAuth, String username) {
+		    UserDetails newPrincipal = memberUserDetailsService.loadUserByUsername(username);
+		    UsernamePasswordAuthenticationToken newAuth = new UsernamePasswordAuthenticationToken(newPrincipal, currentAuth.getCredentials(), newPrincipal.getAuthorities());
+		    newAuth.setDetails(currentAuth.getDetails());	    
+		    return newAuth;
+	 }
+	
+	@GetMapping("/member.do/{memID}")
+	public @ResponseBody Member member(@PathVariable String memID) {
+		Member vo = mapper.member(memID);
+		return vo; //access-denied.jsp 
+	}
+	
 	
 	@GetMapping("/totalList.do")
 	public String totalList(Model model) {
@@ -51,8 +78,6 @@ public class MemberController{
 		return "main"; //access-denied.jsp 
 	}
 
-	
-	
 	//회원가입화면 
 	//http://localhost:8080/mvc05/membermemberInserForm.do 요청 
 	@RequestMapping("/memberInsertForm.do")
@@ -189,6 +214,7 @@ public class MemberController{
 //		main.jsp에서 ${sessionScope.member.memName}로 출력해서 사용 : ${!empty member}
 		
 //		홈 화면으로
+//		return "redirect:/";
 		return "redirect:/memberLoginForm.do";
 	}
 	
@@ -356,7 +382,11 @@ public class MemberController{
 			}
 		}
 //		
-		
+		// 스프링보안(새로운 인증 세션을 생성->객체바인딩)
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		MemberUser userAccount = (MemberUser) authentication.getPrincipal();
+		SecurityContextHolder.getContext().setAuthentication(createNewAuthentication(authentication,userAccount.getMember().getMemID()));
+
 		
 //		수정 후, 조회
 //		vo = mapper.getMemberByID(vo.getMemID()); //조회(JOIN)
@@ -469,10 +499,18 @@ public class MemberController{
 		
 //		회원 사진 업데이트 후에, session객체바인딩 새롭게 해줘야 리다이렉트 시, jsp파일에서 인식한다.
 //		vo = mapper.getMemberByID(vo.getMemID());
-		vo = mapper.getMemberByIdx(vo.getMemIdx());
+//		vo = mapper.getMemberByIdx(vo.getMemIdx());
 		
 //		세션객체바인딩 새롭게 
-		session.setAttribute("member", vo); 
+//		session.setAttribute("member", vo); 
+		
+		
+		// 스프링보안(새로운 인증 세션을 생성->객체바인딩)
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		MemberUser userAccount = (MemberUser) authentication.getPrincipal();
+		SecurityContextHolder.getContext().setAuthentication(createNewAuthentication(authentication,userAccount.getMember().getMemID()));
+
+		
 		rattr.addFlashAttribute("msg1", "파일 업로드 성공");
 		rattr.addFlashAttribute("msg2", "성공적으로 파일이 업로드 되었습니다.");
 //		홈화면으로 

@@ -20,6 +20,10 @@
     select memID from member where memID = #{memID}
   </select>
   
+  <select id="member" parameterType="String" resultType="kr.bit.entity.Member">
+    select * from member where memID = #{memID}
+  </select>
+  
   
   
   
@@ -27,8 +31,9 @@
 <!--   <select id="memberLogin" parameterType="kr.bit.entity.Member" resultType="kr.bit.entity.Member">
     select * from member where memID = #{memID} and memPassword = #{memPassword}
   </select> -->
-  <select id="memberLogin" parameterType="String" resultMap="memberMap">
   
+  <!-- 멤버와 권한 테이블 join -->
+  <select id="memberLogin" parameterType="String" resultMap="memberMap">
   	SELECT
   		*
   	FROM
@@ -39,7 +44,6 @@
   		M.memID = A.memID
   	WHERE
   		M.memID = #{memID}
-  		
   </select>
   
   

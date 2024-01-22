@@ -4,6 +4,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"  />
+<c:set var="user" value="${SPRING_SECURITY_CONTEXT.authentication.principal}"/>
+<!-- 권한은 따로 추출 -->
+<c:set var="auth" value="${SPRING_SECURITY_CONTEXT.authentication.authorities}"/>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,14 +56,14 @@
     							<!-- enctype="multipart/form-data" 일 때는, 쿼리스트링 방식으로 토큰 넘겨줌  -->
       <form action="${contextPath}/memberImageInsert.do?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data">
       	<!--로그인 한 회원의 idx값 넘어간다.  -->
-         <input type="hidden" name="memIdx" value="${sessionScope.member.memIdx}"/>
-         <input type="hidden" name="memID" value="${sessionScope.member.memID}"/>
+         <input type="hidden" name="memIdx" value="${user.member.memIdx}"/>
+         <input type="hidden" name="memID" value="${user.member.memID}"/>
          
          <table class="table table-bordered" style="text-align: center; border: 1px solid #dddddd;">
            
            <tr>
              <td style="width: 110px; vertical-align: middle;">아이디</td>
-             <td>${sessionScope.member.memID}</td>
+             <td>${user.member.memID}</td>
            </tr>
            
            <tr>

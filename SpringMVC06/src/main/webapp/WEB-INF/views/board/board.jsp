@@ -19,7 +19,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   
-  <script type="text/javascript">
+  <script type="text/javascript" defer>
   
 	/* ajax POST CSRF 토큰 */
 	var csrfHeaderName = "${_csrf.headerName}";
@@ -103,9 +103,12 @@
     	    listHtml+="<textarea id='textArea"+board.idx+"' readonly rows='7' class='form-control'></textarea>";
 	    	listHtml+="<br/>";
 	    	
+	    	console.log("${user.member.memID}");
+	    	console.log(board.memID);
+	    	
 	  	    /* if("${auth[0]}" == 'ROLE_USER') */
 	    	/* 본인이 작성한 글이면 수정, 삭제버튼 클릭 가능 */
-			if("${user}.member.memID" == board.memID) {
+			if("${user.member.memID}" == board.memID) {
 				listHtml+="<span id='updateBtn"+board.idx+"'><button class='btn btn-primary btn-sm' onclick='boardUpdateForm("+board.idx+")'>수정화면</button></span>&nbsp;"; /* nbsp; : 공백 */
 				listHtml+="<button class='btn btn-warning btn-sm' onclick='boardDelete("+board.idx+")'>삭제</button>&nbsp;";
 				listHtml+="<button class='btn btn-info btn-sm' onclick='boardList()'>리스트로</button>";
@@ -197,7 +200,7 @@
   	/* 글이 열려있다면, 글 닫아줌 */	
 	  } else {
 	    $("#content" + idx).css("display","none");
-		$("#textA" + vo.idx).attr("readonly", true);
+		$("#textA" + idx).attr("readonly", true);
 	  }
 	}
 	

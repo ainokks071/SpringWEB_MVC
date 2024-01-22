@@ -11,6 +11,7 @@ import kr.bit.entity.Member;
 @Mapper
 public interface MemberMapper {
 	
+	public Member member(String memID);
 
 //	아이디 중복체크
 	public String memberDbcheck(String memID);

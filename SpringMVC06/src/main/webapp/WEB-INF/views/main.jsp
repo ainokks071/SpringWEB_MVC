@@ -4,7 +4,7 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"  />
 <c:set var="user" value="${SPRING_SECURITY_CONTEXT.authentication.principal}"/>
-<c:set var="auth" value="${SPRING_SECURITY_CONTEXT.authentication.authorities}"/>
+<c:set var="auth" value="${SPRING_SECURITY_CONTEXT.authentication.authorities}"/> <!-- 권한값만 들어가있다. -->
     
 <!DOCTYPE html>
 <html lang="en">
@@ -17,23 +17,33 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   
    <script type="text/javascript">
-   /*  회원가입 성공 후, 리다이렉트시 한번 뿌려줄 데이터 객체바인딩
-		rattr.addFlashAttribute("msg1", "회원가입 성공");
-		rattr.addFlashAttribute("msg2", vo.getMemName()+"님, 환영합니다."); */
-		
-   /*  로그인 성공 후, 리다이렉트시 한번 뿌려줄 데이터 객체바인딩
-		rattr.addFlashAttribute("msg1", "로그인 성공");
-		rattr.addFlashAttribute("msg2", vo.getMemName()+"님, 환영합니다."); */
+   
 	$(document).ready(function() {
-	  /* msg1이 비어있지 않다는 것은, 회원가입 성공한 것. */
-		if(${!empty msg1}) {
-			$("#modalTitle").text("${msg1}");
-			$("#modalContent").html("<span style='color: green;'> ${msg2} </span>");
+	if(${user.member.memID != null}) {
+	    $.ajax({
+  			url : "member.do/${user.member.memID}",
+  			type : "get",
+  			dataType : "json",
+  			success : function(member) {
+  				/* alert(member.memID); */
+  				if(${msg1 != null}) {	
+	  				$("#modalTitle").text("${msg1}");
+	  				$("#modalContent").html("<span style='color: green;'> "+member.memName+"님 환영합니다. </span>");
+	  				$("#myModal").modal("show");
+  				}
+  			},
+  			error : function() {
+  				alert("error");
+  			}
+  		});
+	}
+	
+	if(${msg2 != null}) {	
+			$("#modalTitle").text("${msg2}");
+			$("#modalContent").html("<span style='color: red;'> Bye ~ </span>");
 			$("#myModal").modal("show");
 		}
 	});  
-		
-		
    </script>
   
 </head>
@@ -44,8 +54,8 @@
 
  <div class="container">
   <h3>Spring MVC 06</h3>
-  <h4 style="color:blue;"> <c:if test="${!empty user.member}"> ${user.member.memName}님 환영합니다.</c:if></h4>
-  <h4 style="color:red;"> <c:if test="${empty user.member}"> 로그인 해주세요 !</c:if></h4>
+  <h4 style="color:blue;"> <c:if test="${user.member.memName != null}"> ${user.member.memName}님 환영합니다.</c:if></h4>
+  <h4 style="color:red;"> <c:if test="${user.member.memName == null}"> 로그인 해주세요 !</c:if></h4>
   
   <p>게시판 + 회원관리 : 권한 -> 회원가입, 로그인 기능 구현</p>
 </div>
@@ -54,7 +64,7 @@
   <div class="panel panel-default">
   
     <div>
-       <img src="${contextPath}/resources/images/background.jpeg" style="width: 100%; height: 380px;"/>
+       <img src="${contextPath}/resources/images/background.jpeg" style="width: 100%; height: 800px;"/>
     </div>
     
     <div class="panel-body"> <!-- 탭 메뉴 -->

@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  	<script type="text/javascript">
+  	<script type="text/javascript" defer>
 	   /*  로그인 실패 후, 리다이렉트시 "한번" 뿌려줄 데이터 객체바인딩
 			rattr.addFlashAttribute("msg1", "로그인 실패");
 			rattr.addFlashAttribute("msg2", "아이디와 비밀번호를 확인해주세요."); */
@@ -27,19 +27,21 @@
 			}
 		  
 		  /* msg1이 비어있지 않다는 것은, 회원가입 성공한 것. */
-			if(${!empty msg1}) {
+/* 			if(${!empty msg1}) {
 				$("#modalTitle").text("${msg1}");
 				$("#modalContent").html("<span style='color: green;'> ${msg2} </span>");
 				$("#myModal").modal("show");
-			}
- 
-		  /* 스프링 시큐리티 : 로그인 실패 시(누락 or 일치X) -> /memberLoginForm.do?error : 쿼리스트링으로과 함께 리다이렉트  
+			} */
+		  /* 스프링 시큐리티 : 로그인 화면에서, 로그인 실패 시(누락 or 일치X) 
+		 -> /memberLoginForm.do?error : 쿼리스트링으과 함께 리다이렉트  ?
 				  JSP에서, param.변수명 으로 받을 수 있다.*/
 		 	if(${param.error != null}) {
 				$("#modalTitle").text("로그인 실패(스프링 시큐리티)");
 				$("#modalContent").html("<span style='color: red;'> 일치하는 회원이 없습니다. 다시 로그인해주세요. </span>");
 				$("#myModal").modal("show");
 		 	}
+		 
+		 console.log("${param.error}"); //빈문자열
 		  
 		});  
 	</script>
